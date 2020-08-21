@@ -117,6 +117,7 @@ class AddPet extends Component {
             value={this.state.description}
             onChange={e => this.handleChange(e)}
           />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     )

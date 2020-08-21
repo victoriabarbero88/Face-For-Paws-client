@@ -11,6 +11,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
 import AddPet from "./components/pets/AddPet";
+import ListsPets from "./components/pets/ListsPets";
+import PetDetail from "./components/pets/PetDetail";
 
 
 class App extends Component {
@@ -26,6 +28,9 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
             <Route exact path='/add-pet' component={AddPet}/>
+            <Route exact path='/pet' component={ListsPets}/>
+            <Route exact path='/pet/:id' component={PetDetail}/>
+
           </Switch>
         </div>
 

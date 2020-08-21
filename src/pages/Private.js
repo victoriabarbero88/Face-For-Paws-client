@@ -7,6 +7,7 @@ class Private extends Component {
     return (
       <div>
         <h1>Welcome {this.props.user.name}</h1>
+        
       </div>
     );
   }

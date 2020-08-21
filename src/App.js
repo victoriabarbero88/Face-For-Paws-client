@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 //rutas de componentes
 import AuthProvider from "./lib/AuthProvider";
@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
+import AddPet from "./components/pets/AddPet";
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
+            <Route exact path='/add-pet' component={AddPet}/>
           </Switch>
         </div>
 

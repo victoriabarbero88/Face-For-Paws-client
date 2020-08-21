@@ -17,6 +17,9 @@ class Navbar extends Component {
           (<>
             <p className='navbar-user'>Email: {user.email}</p>
             <button className='navbar-button' onClick={logout}>Logout</button>
+            <Link to='/add-pet'>
+              <button className='navbar-button'>Add pet</button>
+            </Link>
           </>) 
           : 
           (<>

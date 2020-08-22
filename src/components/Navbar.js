@@ -9,13 +9,13 @@ class Navbar extends Component {
     const { user, logout, isLoggedIn } = this.props;
     return (
       <nav className='navbar'>
-        <Link to={"/"} id='home-btn'>
-          <h4>Home</h4>
+        <Link to={"/profile"} id='profile-btn'>
+          <img src="../../assets/Logo.png" alt=""/>
         </Link>
         {
           isLoggedIn ? 
           (<>
-            <p className='navbar-user'>Email: {user.email}</p>
+            <p className='navbar-user'>Name: {user.name}</p>
             <button className='navbar-button' onClick={logout}>Logout</button>
             <Link to='/pet'>
               <button className='navbar-button'>pet</button>

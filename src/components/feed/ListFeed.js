@@ -24,13 +24,18 @@ class ListFeed extends Component {
   render() {
     return (
       <div>
-      <h1>Feeds</h1>
+        <h1>Feeds</h1>
+        <Link to='/pet'>
+          <button className='navbar-button'>Pets</button>
+        </Link>
+        <Link to='/shelter'>
+          <button className='navbar-button'>Shelters</button>
+        </Link>
         <div>
           {this.state.listOfFeeds.map(feed => {
             return (
               <div key={feed._id}>
                 <Link to={`/feed/${feed._id}`}>
-                  
                   <h3>{feed.title}</h3>
                   <p>{feed.name}</p>
                   <img src={feed.photo} alt="feed"/>

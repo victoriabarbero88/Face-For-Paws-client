@@ -11,12 +11,10 @@ class Profile extends Component {
         <p>About me: {this.props.user.description}</p>
         <p>My life companions: {this.props.user.myPets}</p>
         <p>I'm available for: {this.props.user.state}</p>
-
-
+        <h3>My pets</h3>
       </div>
     )
-  }
-  
+  }  
 }
 
 export default withAuth(Profile);

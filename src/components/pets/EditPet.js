@@ -56,42 +56,42 @@ class EditPet extends Component {
   };
   handleChangePhoto = event => {
     this.setState({
-      name: event.target.value
+      photo: event.target.value
     });
   };
   handleChangelocation = event => {
     this.setState({
-      name: event.target.value
+      location: event.target.value
     });
   };
   handleChangeSize = event => {
     this.setState({
-      name: event.target.value
+      size: event.target.value
     });
   };
   handleChangeAge = event => {
     this.setState({
-      name: event.target.value
+      age: event.target.value
     });
   };
   handleChangeGender = event => {
     this.setState({
-      name: event.target.value
+      gender: event.target.value
     });
   };
   handleChangeSpecies = event => {
     this.setState({
-      name: event.target.value
+      species: event.target.value
     });
   };
   handleChangeDescription = event => {
     this.setState({
-      name: event.target.value
+      description: event.target.value
     });
   };
   handleChangeStatus = event => {
     this.setState({
-      name: event.target.value
+      status: event.target.value
     });
   };
 

@@ -23,16 +23,16 @@ class ListShelters extends Component {
 
   render() {
     return (
-      <div>
+      <div className="shelterLGeneral">
       <h1>Shelters</h1>
-        <div className="shelterContainer">
-          <div className="shelterStyle">
+        <div className="shelterLContainer">
+          <div className="shelterlStyle">
             {this.state.listOfShelters.map(shelter=> {
               return (
-                <div key={shelter._id}>
-                  <Link to={`/shelter/${shelter._id}`}>
-                    <img src={shelter.photo[0].medium} alt="shelter" style={{width: '100px'}}/>
-                    <p>{shelter.name}</p>
+                <div key={shelter._id} className="shelterDiv" >
+                  <Link to={`/shelter/${shelter._id}`} className="shelterLink">
+                    <h3>{shelter.name}</h3>
+                    <img src={shelter.photo[0].medium} alt="shelter" style={{width: '100%', maxWidth: 150}}/>
                   </Link>
                 </div>
               );

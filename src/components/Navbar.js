@@ -31,13 +31,13 @@ class Navbar extends Component {
                 <button className='feed-button actiive'>Feed</button>
               </Link>
               <Link to='/pet'>
-                <button className='pet-button'>Pets</button>
+                <button className='pet-button'>PawFamily</button>
               </Link>
               <Link to='/shelter'>
                 <button className='shelter-button'>Shelters</button>
               </Link>
               <Link to='/user'>
-                <button className='shelter-button'>Users</button>
+                <button className='shelter-button'>PawFriends</button>
               </Link>
               <button className='logout-button' onClick={logout}>Logout</button>
             </div> 

@@ -23,21 +23,25 @@ class ListFeed extends Component {
 
   render() {
     return (
-      <div>
+      <div className="feedLGeneral">
         <h1>Feeds</h1>
-        <div>
-          {this.state.listOfFeeds.map(feed => {
-            return (
-              <div key={feed._id}>
-                <Link to={`/feed/${feed._id}`}>
-                  <h3>{feed.title}</h3>
-                  <p>{feed.name}</p>
-                  <img src={feed.photo} alt="feed"/>
-                  <p>{feed.description}</p>
-                </Link>
-              </div>
-            );
-          })}
+        <div className="feedLContainer">
+          <div className="feedLStyle">
+            {this.state.listOfFeeds.map(feed => {
+              return (
+                <div key={feed._id} className="feedDiv">
+                  <Link to={`/feed/${feed._id}`} className="feedLink">
+                    <h3>{feed.title}</h3>
+                    <img src={feed.photo} alt="feed" style={{width: '100%', maxWidth: 300}}/>
+                    <div className="feedText" >
+                      <p>{feed.description}</p>
+                      <p className="feedName">{feed.name}</p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div>
           <Link to={"/add-feed"} className="plusimg">

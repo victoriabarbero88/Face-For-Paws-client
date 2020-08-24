@@ -24,14 +24,15 @@ class ListsPets extends Component {
 
   render() {
     return (
-      <div>
+      <div className="PetLGeneral">
+      <h1>PawFamily</h1>
         <div className="petContainer">
-          <div className="petStyle">
+          <div className="petLStyle">
             {this.state.listOfPets.map(pet => {
               return (
-                <div key={pet._id} >
+                <div key={pet._id} className="petLDiv" >
                   <Link to={`/pet/${pet._id}`} className="petLink">
-                    <h3>{pet.name}</h3>
+                    <h3>Hi! I'm {pet.name}</h3>
                     {pet.photo[0] ? (
                       <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
                     ) : null}

@@ -1,14 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-
-class SheleterDetail extends Component {
+class Shelter extends Component {
   constructor(props){
     super(props);
     this.state= {};
   }
-  
+
   componentDidMount() {
     this.getSingleShelter();
   }
@@ -33,9 +32,8 @@ class SheleterDetail extends Component {
       });
   };
 
-  render(){
-    //console.log(this.state)
-    return (
+  render() {
+    return(
       <div>
         <div>
           <h1>{this.state.name}</h1>
@@ -47,12 +45,13 @@ class SheleterDetail extends Component {
           <p>{this.state.website}</p>
           <p>{this.state.description}</p>
           <p>{this.state.pets}</p>
-          <Link to={"/shelter"}>Back to Shelters</Link>
+          <Link to={"/add-pet"} className="plusimg">
+            <img src="../../assets/plus.png" alt=""/>
+          </Link>
         </div>
       </div>
     )
   }
 }
 
-export default SheleterDetail;
-
+export default Shelter;

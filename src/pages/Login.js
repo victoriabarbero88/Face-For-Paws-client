@@ -30,24 +30,25 @@ class Login extends Component {
     const { email, password, isShelter } = this.state;
 
     return (
-      <div>
+      <div className="loginContainer">
 
 
         <h1>Login</h1>
+        <div className="loginStyle">
+          <form onSubmit={this.handleFormSubmit}>
 
-        <form onSubmit={this.handleFormSubmit}>
-
-          <label>Are you a Shelter?</label>
-          <input type="checkbox" name="isShelter" value={isShelter} onChange={this.handleChange}/>
-
-          <label>Email:</label>
-          <input type="text" name="email" value={email} onChange={this.handleChange}/>
-
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-
-          <input type="submit" value="Login" />
-        </form>
+            <label>Are you a Shelter? </label>
+            <input type="checkbox" name="isShelter" value={isShelter} onChange={this.handleChange}/>
+            <br/>
+            <label>Email:</label>
+            <input type="text" name="email" value={email} onChange={this.handleChange}/>
+            <br/>
+            <label>Password:</label>
+            <input type="password" name="password" value={password} onChange={this.handleChange} />
+            <br/>
+            <input type="submit" value="Login" className="loginButton" />
+          </form>
+        </div>
       </div>
     );
   }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 
 
 
-class UserDetail extends Component {
+
+class User extends Component {
   constructor(props){
     super(props);
     this.state= {};
@@ -40,17 +40,16 @@ class UserDetail extends Component {
     console.log(this.state)
     return (
       <div>
-        <div className="userDContainer">
-          <div className="userDStyle">
-            <h1>Hi, I'm {this.state.name}</h1>
+        <div className="userContainer">
+          <div className="userStyle">
+            <h1>{this.state.name}</h1>
             {this.state.photo ? (
-            <img src={this.state.photo} alt="user" style={{width: 100}}/>
+            <img src={this.state.photo} alt="user" style={{width: '100%'}}/>
             ) : null}
-            <p>I'm from {this.state.location} and I'm available for {this.state.status}</p>
-            <p>Something about me, {this.state.description}</p>
-            <div className="userLinkContainer">
-              <Link to={"/user"} className="userLink" >Back to Users</Link>
-            </div>
+            <p>{this.state.location}</p>
+            <p>{this.state.status}</p>
+            <p>{this.state.website}</p>
+            <p>{this.state.description}</p>
           </div>
         </div>
       </div>
@@ -58,5 +57,5 @@ class UserDetail extends Component {
   }
 }
 
-export default UserDetail;
+export default User;
 

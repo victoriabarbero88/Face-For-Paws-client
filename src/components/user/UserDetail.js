@@ -39,17 +39,22 @@ class UserDetail extends Component {
   //primero no llega nada, después llega objeto
     console.log(this.state)
     return (
-      <div>
-        <div className="userDContainer">
-          <div className="userDStyle">
-            <h1>Hi, I'm {this.state.name}</h1>
-            {this.state.photo ? (
-            <img src={this.state.photo} alt="user" style={{width: 100}}/>
-            ) : null}
-            <p>I'm from {this.state.location} and I'm available for {this.state.status}</p>
-            <p>Something about me, {this.state.description}</p>
-            <div className="userLinkContainer">
-              <Link to={"/user"} className="userLink" >Back to Users</Link>
+      <div className="userLGeneral">
+      <h1>{this.state.name}</h1>
+        <div className="userContainer">
+          <div className="userStyle">
+            <div className="userLDiv">
+              {this.state.photo ? (
+              <img src={this.state.photo} alt="user" style={{width: '100%', maxWidth: 200}}/>
+              ) : null}
+              <div className="userText">
+                <p>Hi, I'm {this.state.name} and I'm from {this.state.location}.</p>
+                <p>I'm available for {this.state.status}</p>
+                <p>If I could say omething about me, {this.state.description}</p>
+              </div>
+              <div className="userLinkContainer">
+                <Link to={"/user"} className="userLink" >Back to Users</Link>
+              </div>
             </div>
           </div>
         </div>

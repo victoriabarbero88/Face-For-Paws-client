@@ -34,7 +34,7 @@ class ListUsers extends Component {
                   <div className="userLimg">
                     <img src={user.photo} alt="user" style={{width: '100%', maxWidth: 200}}/>
                   </div> 
-                    <p>{user.name}</p>
+                    <p>Hi! I'm {user.name}.</p>
                   </Link>
                 </div> 
             );

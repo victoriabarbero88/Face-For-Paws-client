@@ -12,6 +12,7 @@ class Login extends Component {
     const { email, password, isShelter } = this.state;
     console.log('Login -> form submit', { email, password, isShelter });
     this.props.login({ email, password, isShelter });
+    //console.log(this.props.login)
   };
 
 
@@ -21,8 +22,9 @@ class Login extends Component {
     if (name === "isShelter"){
       value = event.target.checked
     }
-    console.log(name, event.target.checked)
+    //console.log(name, event.target.checked)
     this.setState({ [name]: value });
+    console.log(event.target)
   };
 
   render() {

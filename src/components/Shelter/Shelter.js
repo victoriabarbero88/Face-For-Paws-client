@@ -46,7 +46,7 @@ class Shelter extends Component {
           <p>{this.state.description}</p>
           <p>{this.state.pets}</p>
           <Link to={"/add-pet"} className="plusimg">
-            <img src="../../assets/plus.png" alt=""/>
+            <img src="../../assets/plus.png" alt="" style={{width: '100%', maxWidth: 300}}/>
           </Link>
         </div>
       </div>

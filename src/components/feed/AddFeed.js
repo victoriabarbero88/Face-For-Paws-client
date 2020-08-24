@@ -35,38 +35,45 @@ class AddFeed extends Component {
 
   render() {
     return (
-      <div>
+      <div className="addFeedGeneral">
         <h1>Add a Feed</h1>
-        <form onSubmit={this.handleFormSubmit}>
-        <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Photo</label>
-          <input
-            type="file"
-            name="photo"
-            value={this.state.photo}
-            onChange={e => this.handleChange(e)}
-          />  
-          <label>description:</label>
-          <textarea
-            name="description"
-            value={this.state.description}
-            onChange={e => this.handleChange(e)}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="">
+          <form onSubmit={this.handleFormSubmit}>
+          <div className="addFeedDiv">
+            
+            <input
+              type="text"
+              name="title"
+              value={this.state.title}
+              onChange={e => this.handleChange(e)}
+              placeholder="Title"
+            />
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={e => this.handleChange(e)}
+              placeholder="Written by"
+            />
+           
+            <input
+              type="file"
+              name="photo"
+              value={this.state.photo}
+              onChange={e => this.handleChange(e)}
+              placeholder="Photo"
+            />  
+            <textarea
+              name="description"
+              value={this.state.description}
+              onChange={e => this.handleChange(e)}
+              placeholder="Description"
+            />
+            <input type="submit" value="Submit" />
+            <img src="" alt=""/>
+          </div>
+          </form>
+        </div>
       </div>
     )
   }

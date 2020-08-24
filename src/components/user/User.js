@@ -44,7 +44,7 @@ class User extends Component {
           <div className="userStyle">
             <h1>{this.state.name}</h1>
             {this.state.photo ? (
-            <img src={this.state.photo} alt="user" style={{width: '100%'}}/>
+            <img src={this.state.photo} alt="user" style={{width: '100%', maxWidth: 200}}/>
             ) : null}
             <p>{this.state.location}</p>
             <p>{this.state.status}</p>

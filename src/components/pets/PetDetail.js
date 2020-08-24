@@ -37,20 +37,23 @@ class PetDetail extends Component {
   
   render(){
     return (
-      <div>
-      <div>
-        <h1>My name is {this.state.name}</h1>
-        <h2>I'm available for {this.state.status}</h2>
-        {this.state.photo ? (
-            <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%'}}/>
-            ) : null}
-        <p>I'm a {this.state.gender} {this.state.species}</p>
-        <p>I'm {this.state.age} and I'm living in {this.state.location}</p>
-        <p>Let me explain you a little bit about me:{this.state.description}</p>
+      <div className="PetLGeneral">
+      <h1>{this.state.name}</h1>
+        <div className="petContainer">
+          <div className="petLStyle">
+            <div className="petLDiv">
+            <h2>I'm available for {this.state.status}</h2>
+              {this.state.photo ? (
+                <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%', maxWidth: 200}}/>
+                ) : null}
+              <p>Hi, my name is {this.state.name} and I'm a {this.state.age} {this.state.gender} {this.state.species} I'm living in {this.state.location}</p>
+              <p>Let me explain you a little bit about me:{this.state.description}</p>
+            </div>
+            <Link to={"/pet"} className="petLink">
+            Back to pets
+            </Link>
+          </div>
         </div>
-        <Link to={"/pet"}>
-        Back to pets
-        </Link>
       </div>
     )
   }

@@ -26,7 +26,7 @@ import ListUsers from "./components/user/listUsers";
 class App extends Component {
   render() {
     return (
-      <AuthProvider>
+      <AuthProvider className='container'>
         <Navbar />
         <div className='container'>  
           <Switch>

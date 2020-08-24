@@ -36,18 +36,26 @@ class SheleterDetail extends Component {
   render(){
     //console.log(this.state)
     return (
-      <div>
-        <div>
-          <h1>{this.state.name}</h1>
-           {this.state.photo ? (
-            <img src={this.state.photo[0].small} alt="shelter"/>
-            ) : null}
-          <p>{this.state.location}</p>
-          <p>{this.state.phone}</p>
-          <p>{this.state.website}</p>
-          <p>{this.state.description}</p>
-          <p>{this.state.pets}</p>
-          <Link to={"/shelter"}>Back to Shelters</Link>
+      <div className="shelterGeneral">
+        <h1>{this.state.name}</h1>
+        <div className="shelterContainer">
+          <div className="shelterStyle">
+            <div className="shelterDDiv">
+              {this.state.photo ? (
+              <img src={this.state.photo[0].small} alt="shelter" style={{width: '150%', maxWidth: 200}}/>
+              ) : null}
+              <div className="shelterDText">
+                <p>Location: {this.state.location}</p>
+                <p>Phone number: {this.state.phone}</p>
+                <p>Website: <Link src="{this.state.website}">{this.state.website}</Link></p>
+                <p>{this.state.description}</p>
+                <p>{this.state.pets}</p>
+              </div>
+              <Link to={"/shelter"} className="shelterDLink">
+              Back to Shelters
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -37,14 +37,21 @@ class FeedDetail extends Component {
   
   render(){
     return (
-      <div>
-        <h1>{this.state.title}</h1>
-        <p>{this.state.name}</p>
-        <img src={this.state.photo} alt="feed" />
-        <p>{this.state.description}</p>
-        <Link to={"/feed"}>
-        Back to Feed
-        </Link>
+      <div className="feedLGeneral">
+      <h1>A {this.state.name}'s Feed</h1>
+        <div className="feedLContainer">
+          <div className="feedDiv">
+            <h3>{this.state.title}</h3>
+            <img src={this.state.photo} alt="feed" style={{width: '100%', maxWidth: 300}} />
+            <div className="feedText" >
+              <p>{this.state.description}</p>
+              <p className="feedName">{this.state.name}</p>
+            </div>
+            <Link to={"/feed"}className="feedLink">
+            Back to Feed
+            </Link>
+          </div>
+        </div>
       </div>
     )
   }

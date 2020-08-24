@@ -31,7 +31,9 @@ class ListsPets extends Component {
               <div key={pet._id}>
                 <Link to={`/pet/${pet._id}`}>
                   <h3>{pet.name}</h3>
-                  <img src={pet.photo} alt="pets"/>
+                  {pet.photo[0] ? (
+                    <img src={pet.photo[0].small} alt="pet"/>
+                  ) : null}
                 </Link>
               </div>
             );

@@ -26,7 +26,6 @@ class Signup extends Component {
     return (
       <div>
         <h1>Sign Up</h1>
-
         <form onSubmit={this.handleFormSubmit}>
 
           <label>Name:</label>
@@ -35,15 +34,13 @@ class Signup extends Component {
           <label>Email:</label>
           <input type="text" name="email" value={email} onChange={this.handleChange} />
 
-
           <label>Password:</label>
           <input type="password" name="password" value={password} onChange={this.handleChange} />
 
           <input type="submit" value="Signup" />
         </form>
         
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+        <Link to={"/login"}>Already have account? Login</Link>
       </div>
     );
   }

@@ -6,8 +6,7 @@ function PrivateRoute({ component: Component, isLoggedIn, ...rest}) {
   return (
     <Route
     {...rest}
-    //si no estas logeado te redirecciona a login y sino renderiza el contenido que traes por props
-    render={ (props) => isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />}
+    render={ (props) => isLoggedIn ? <Component {...props} /> : <Redirect to="./feed/feed" />}
     />
   );
 }

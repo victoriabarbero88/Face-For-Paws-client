@@ -9,10 +9,10 @@ class ListUsers extends Component {
     this.state = { listOfUsers: [] };
   }
 
-  getAllFeeds = () => {
+  getAllUsers = () => {
     axios.get(`http://localhost:4000/user-routes/user`).then(responseFromApi => {
       this.setState({
-        listOfPets: responseFromApi.data
+        listOfUsers: responseFromApi.data
       });
     });
   };
@@ -24,18 +24,20 @@ class ListUsers extends Component {
   render() {
     return (
       <div>
-      <h1>Users</h1>
-        <div>
-          {this.state.listOfUsers.map(user=> {
-            return (
-              <div key={user._id}>
-                <Link to={`/user/${user._id}`}>
-                  <img src={user.photo} alt="user"/>
-                  <p>{user.name}</p>
-                </Link>
-              </div>
+        <h1>Users</h1>
+        <div className="userContainer">
+          <div className="userStyle">
+            {this.state.listOfUsers.map(user=> {
+              return (
+                <div key={user._id}>
+                  <Link to={`/user/${user._id}`}>
+                    <img src={user.photo} alt="user" style={{width: '100px'}}/>
+                    <p>{user.name}</p>
+                  </Link>
+                </div> 
             );
           })}
+          </div>
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class EditShelter extends Component {
   constructor(props) {
@@ -104,6 +105,12 @@ class EditShelter extends Component {
           <input type="submit" value="Submit" />
 
         </form>
+        <div>
+          <h3>Pets in the shelter:</h3>
+          <Link to={"/add-pet"} className="plusimg">
+            <img src="../../assets/plus.png" alt=""/>
+          </Link>
+        </div>
       </div>
     );
   }

@@ -1,40 +1,76 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 
 class Navbar extends Component {
   render() {
     //traemos datos de props desde el "padre" para renderizar una vista o otra, si esta logeado muestra el email y boton de logout
     //si no esta logeado muestra botones de sign y login
-    const { user, logout, isLoggedIn } = this.props;
+    const { logout, isLoggedIn } = this.props;
+
     return (
-      <nav className='navbar'>
-        <Link to={"/profile"} id='profile-btn'>
-          <img src="../../assets/Logo.png" alt=""/>
-        </Link>
+      <div>
         {
           isLoggedIn ? 
           (<>
-            <p className='navbar-user'>Name: {user.name}</p>
-            <button className='navbar-button' onClick={logout}>Logout</button>
-            <Link to='/pet'>
-              <button className='navbar-button'>pet</button>
-            </Link>
+
+            <nav className='navbar'>
+              <Link to={"/"} className="backimg active">
+                <img src="../../assets/back.png" alt=""/>
+              </Link>
+              <Link to={"/feed"} className="logoimg">
+                <img src="../../assets/Logo.png" alt=""/>
+              </Link>
+              <Link to={"/profile"} className="profileimg">
+                <img src="../../assets/profile.png" alt=""/>
+              </Link>
+            </nav>
+
+            <div className="tabs">
+              <Link to='/feed'>
+                <button className='feed-button actiive'>Feed</button>
+              </Link>
+              <Link to='/pet'>
+                <button className='pet-button'>Pets</button>
+              </Link>
+              <Link to='/shelter'>
+                <button className='shelter-button'>Shelters</button>
+              </Link>
+              <Link to='/user'>
+                <button className='shelter-button'>Users</button>
+              </Link>
+              <button className='logout-button' onClick={logout}>Logout</button>
+            </div> 
           </>) 
           : 
           (<>
-            <Link to='/login'>
-              <button className='navbar-button'>Login</button>
-            </Link>
-            <br />
-            <Link to='/signup'>
-              <button className='navbar-button'>Sign Up</button>
-            </Link>
+          
+            <nav className='navbar'>
+              <Link to={"/"} className="backimg active">
+                <img src="../../assets/back.png" alt=""/>
+              </Link>
+              <Link to={"/"} className="logoimg">
+                <img src="../../assets/Logo.png" alt=""/>
+              </Link>
+              <Link to={"/login"} className="profileimg">
+                <img src="../../assets/profile.png" alt=""/>
+              </Link>
+            </nav>
+
+            <div className="tabs">
+              <Link to='/login'>
+                <button className='login-button'>Login</button>
+              </Link>
+              <Link to='/signup'>
+                <button className='signup-button'>Sign Up</button>
+              </Link>
+            </div>
+
           </>
         )}
-      </nav>
+      </div>
     );
   }
 }
 
-export default withAuth(Navbar);
+export default withRouter(withAuth(Navbar));

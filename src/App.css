@@ -1,32 +1,68 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: white;
+}
+body {
+  background-image: url("https://as1.ftcdn.net/jpg/03/66/34/12/500_F_366341233_BYHCnmhAdwgBmSdKHXKKcMTze2eSw11x.jpg");
+
+  
 }
 
-.App {
-  padding: 20px;
-}
-
-nav.navbar { 
+/*NAVBAR IMG*/
+.navbar {
   display: flex;
-  padding: 20px;
-  background: white; 
+  justify-content: space-evenly;
+  padding-top: 5%;
+}
+.logoimg img {
+  height: 100px;
+}
+.profileimg img {
+  height: 40px;
+}
+.backimg img {
+  height: 40px;
+}
+.plusimg img {
+  height: 50px;
 }
 
-nav.navbar .navbar-user{
-  margin-left: 10px;
-  color: white;
+
+/*NAVBAR TABS*/
+.tabs button{
+  border-color:rgb(182, 221, 226);
+  background-color: rgb(182, 221, 226);
+  padding: 1%;
+
 }
 
-button.navbar-button {
-  padding: 5px 20px;
-  width: 100px;
-  border-radius: 3px;
-  margin: 0 10px;
+/*APP CONTAINER*/
+.container {
+  background-color: rgb(206, 234, 238);
+  margin: 0 5%;
+}
+.tabs {
+  margin: 0 5%;
 }
 
-#home-btn {
-  color: white;
-  text-decoration: none;
+/*PROFILE CONTAINER*/
+
+.profileContainer {
+  padding: 4%;
+}
+
+/*USER*/
+.userStyle img {
+  margin: 3%;
+}
+.userStyle p {
+  margin-left: 4%;
+}
+
+/*SHELTER*/
+.shelterStyle img {
+  margin: 3%;
+}
+.shelterStyle p {
+  margin-left: 4%;
 }

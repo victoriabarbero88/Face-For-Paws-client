@@ -25,12 +25,6 @@ class ListFeed extends Component {
     return (
       <div>
         <h1>Feeds</h1>
-        <Link to='/pet'>
-          <button className='navbar-button'>Pets</button>
-        </Link>
-        <Link to='/shelter'>
-          <button className='navbar-button'>Shelters</button>
-        </Link>
         <div>
           {this.state.listOfFeeds.map(feed => {
             return (
@@ -44,6 +38,11 @@ class ListFeed extends Component {
               </div>
             );
           })}
+        </div>
+        <div>
+          <Link to={"/add-feed"} className="plusimg">
+            <img src="../../assets/plus.png" alt=""/>
+          </Link>
         </div>
       </div>
     );

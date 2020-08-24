@@ -9,7 +9,7 @@ class ListShelters extends Component {
     this.state = { listOfShelters: [] };
   }
 
-  getAllFeeds = () => {
+  getAllShelters = () => {
     axios.get(`http://localhost:4000/user-routes/shelter`).then(responseFromApi => {
       this.setState({
         listOfShelters: responseFromApi.data
@@ -25,17 +25,19 @@ class ListShelters extends Component {
     return (
       <div>
       <h1>Shelters</h1>
-        <div>
-          {this.state.listOfShelters.map(shelter=> {
-            return (
-              <div key={shelter._id}>
-                <Link to={`/shelter/${shelter._id}`}>
-                  <img src={shelter.photo} alt="shelter"/>
-                  <p>{shelter.name}</p>
-                </Link>
-              </div>
-            );
-          })}
+        <div className="shelterContainer">
+          <div className="shelterStyle">
+            {this.state.listOfShelters.map(shelter=> {
+              return (
+                <div key={shelter._id}>
+                  <Link to={`/shelter/${shelter._id}`}>
+                    <img src={shelter.photo[0].medium} alt="shelter" style={{width: '100px'}}/>
+                    <p>{shelter.name}</p>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );

@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Link} from 'react-router-dom';
 
 
-class PetDetail extends Component {
+class FeedDetail extends Component {
   constructor(props){
     super(props);
     this.state = {};
   }
 
   componentDidMount(){
-    this.getSinglePet();
+    this.getSingleFeed();
   }
 
   componentWillUnmount() {
@@ -19,15 +19,13 @@ class PetDetail extends Component {
     };
   }
 
-  getSinglePet = () => {
+  getSingleFeed = () => {
     const { params } = this.props.match;
     axios
-      .get(`http://localhost:4000/user-routes/pet/${params.id}`)
+      .get(`http://localhost:4000/user-routes/feed/${params.id}`)
       .then(resonseFromApi => {
-        const thePet = resonseFromApi.data;
-        //console.log(thePet)
-        this.setState(thePet);
-        //console.log(this.state)
+        const theFeed = resonseFromApi.data;
+        this.setState(theFeed);
       })
       .catch(err => {
         console.log(err);
@@ -40,10 +38,11 @@ class PetDetail extends Component {
       <div>
         <h1>{this.state.name}</h1>
         <p>{this.state.description}</p>
-        <Link to={"/pet"}>Back to pets</Link>
+        <div>{this.renderEditForm()}</div>
+        <Link to={"/feed"}>Back to Feed</Link>
       </div>
     )
   }
 }
 
-export default PetDetail;
+export default FeedDetail;

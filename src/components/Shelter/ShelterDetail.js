@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 
 
-
 class SheleterDetail extends Component {
   constructor(props){
     super(props);
@@ -41,13 +40,18 @@ class SheleterDetail extends Component {
     
         <div>
           <h1>{this.state.name}</h1>
-          <img src={this.state.photo} alt="" />
+           {this.state.photo ? (
+            <img src={this.state.photo[0].small} alt="shelter"/>
+            ) : null}
           <p>{this.state.location}</p>
           <p>{this.state.phone}</p>
           <p>{this.state.website}</p>
           <p>{this.state.description}</p>
           <p>{this.state.pets}</p>
-          <Link to={"/shelter"}>Back to BeerList</Link>
+          <Link to={"/add-pet"} className="plusimg">
+            <img src="../../assets/plus.png" alt=""/>
+          </Link>
+          <Link to={"/shelter"}>Back to Shelters</Link>
         </div>
       </div>
     )

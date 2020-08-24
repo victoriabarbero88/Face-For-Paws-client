@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class FeedDetail extends Component {
@@ -21,11 +21,13 @@ class FeedDetail extends Component {
 
   getSingleFeed = () => {
     const { params } = this.props.match;
+    //console.log(params)
     axios
       .get(`http://localhost:4000/user-routes/feed/${params.id}`)
       .then(resonseFromApi => {
         const theFeed = resonseFromApi.data;
         this.setState(theFeed);
+        console.log(theFeed)
       })
       .catch(err => {
         console.log(err);
@@ -36,10 +38,13 @@ class FeedDetail extends Component {
   render(){
     return (
       <div>
-        <h1>{this.state.name}</h1>
+        <h1>{this.state.title}</h1>
+        <p>{this.state.name}</p>
+        <img src={this.state.photo} alt="feed" />
         <p>{this.state.description}</p>
-        <div>{this.renderEditForm()}</div>
-        <Link to={"/feed"}>Back to Feed</Link>
+        <Link to={"/feed"}>
+        Back to Feed
+        </Link>
       </div>
     )
   }

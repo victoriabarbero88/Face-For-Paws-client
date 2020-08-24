@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import AddPet from "./AddPet";
+
 
 class ListsPets extends Component {
   constructor() {
@@ -25,22 +25,21 @@ class ListsPets extends Component {
   render() {
     return (
       <div>
-        <div>
-          {this.state.listOfPets.map(pet => {
-            return (
-              <div key={pet._id}>
-                <Link to={`/pet/${pet._id}`}>
-                  <h3>{pet.name}</h3>
-                  {pet.photo[0] ? (
-                    <img src={pet.photo[0].small} alt="pet"/>
-                  ) : null}
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <AddPet getData={() => this.getAllPets()} />
+        <div className="petContainer">
+          <div className="petStyle">
+            {this.state.listOfPets.map(pet => {
+              return (
+                <div key={pet._id} >
+                  <Link to={`/pet/${pet._id}`} className="petLink">
+                    <h3>{pet.name}</h3>
+                    {pet.photo[0] ? (
+                      <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
+                    ) : null}
+                  </Link>
+                </div>
+              );
+            })}
+          </div> 
         </div>
       </div>
     );

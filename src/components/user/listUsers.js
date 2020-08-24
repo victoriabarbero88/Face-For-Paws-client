@@ -24,13 +24,13 @@ class ListUsers extends Component {
   render() {
     return (
       <div>
-        <h1>Users</h1>
+        <h1>PawFriends <span role="img" aria-label="paws"> 🐾</span></h1>
         <div className="userContainer">
           <div className="userStyle">
             {this.state.listOfUsers.map(user=> {
               return (
                 <div key={user._id}>
-                  <Link to={`/user/${user._id}`}>
+                  <Link to={`/user/${user._id}`} className="userLink">
                     <img src={user.photo} alt="user" style={{width: '100px'}}/>
                     <p>{user.name}</p>
                   </Link>

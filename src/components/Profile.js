@@ -4,6 +4,7 @@ import { withAuth } from "../lib/AuthProvider";
 class Profile extends Component {
   render() {
     return (
+      
       <div className="profileContainer"> 
 
         <div className="profileStyle">

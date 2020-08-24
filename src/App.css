@@ -3,9 +3,7 @@
   padding: 0;
 }
 body {
-  background-image: url("https://as1.ftcdn.net/jpg/03/66/34/12/500_F_366341233_BYHCnmhAdwgBmSdKHXKKcMTze2eSw11x.jpg");
-
-  
+  background-image: url("https://i.pinimg.com/474x/85/11/37/851137905cb25841681455933eb23741.jpg"); 
 }
 
 /*NAVBAR IMG*/
@@ -45,6 +43,7 @@ body {
   margin: 0 5%;
 }
 
+
 /*PROFILE CONTAINER*/
 
 .profileContainer {
@@ -52,12 +51,41 @@ body {
 }
 
 /*USER*/
-.userStyle img {
-  margin: 3%;
-}
+
 .userStyle p {
   margin-left: 4%;
 }
+.userContainer {
+  padding: 4%;
+  
+}
+.userStyle {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.userStyle img, p {
+  margin: 0 10px;
+  text-align: center;
+}
+
+.userLink {
+  text-decoration: none;
+  color: black;
+}
+
+/*PETS LIST*/
+.petContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10%;
+}
+.petLink {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+
 
 /*SHELTER*/
 .shelterStyle img {

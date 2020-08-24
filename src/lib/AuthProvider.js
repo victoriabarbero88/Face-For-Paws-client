@@ -10,7 +10,7 @@ const withAuth = (WrappedComponent) => {
       return (
         <Consumer>
           {
-            ({login, signup, user, logout, isLoggedIn}) => {
+            ({login, signup, user, logout, isLoggedIn, isShelter}) => {
               return (
                 <WrappedComponent
                   login={login}
@@ -18,6 +18,7 @@ const withAuth = (WrappedComponent) => {
                   user={user}
                   logout={logout}
                   isLoggedIn={isLoggedIn}
+                  isShelter={isShelter}
                   {...this.props} />
               );
             }}
@@ -38,17 +39,17 @@ class AuthProvider extends Component {
   }
 
   signup = (user) => {
-    const {email, name, password } = user;
-
-    auth.signup({ email, name, password })
+    const {email, name, password, isShelter } = user;
+   
+    auth.signup({ email, name, password, isShelter })
       .then((user) => this.setState({ isLoggedIn: true, user}))
       .catch(({response}) => this.setState({ message: response.data.statusMessage}));
   };
 
   login = (user) => {
-    const { email, password } = user;
+    const { email, password, isShelter } = user;
 
-    auth.login({ email, password })
+    auth.login({ email, password, isShelter })
       .then((user) => this.setState({ isLoggedIn: true, user}))
       .catch((err) => this.setState(err));
   };
@@ -60,14 +61,14 @@ class AuthProvider extends Component {
   };
 
   render() {
-    const { isLoading, isLoggedIn, user } = this.state;
+    const { isLoading, isLoggedIn, user, isShelter} = this.state;
     const { login, logout, signup } = this;
 
     return (
       isLoading ?
       <div>Loading</div>
       :
-      (<Provider value={{ isLoggedIn, user, login, logout, signup }} >
+      (<Provider value={{ isLoggedIn, user, login, logout, signup, isShelter }} >
         {this.props.children}
       </Provider>)
     )

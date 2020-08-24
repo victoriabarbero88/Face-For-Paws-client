@@ -15,9 +15,9 @@ class Navbar extends Component {
           (<>
 
             <nav className='navbar'>
-              <Link to={"/"} className="backimg active">
+              <div onClick={this.props.history.goBack} className="backimg">
                 <img src="../../assets/back.png" alt=""/>
-              </Link>
+              </div>
               <Link to={"/feed"} className="logoimg">
                 <img src="../../assets/Logo.png" alt=""/>
               </Link>
@@ -46,9 +46,9 @@ class Navbar extends Component {
           (<>
           
             <nav className='navbar'>
-              <Link to={"/"} className="backimg active">
+              <div onClick={this.props.history.goBack} className="backimg">
                 <img src="../../assets/back.png" alt=""/>
-              </Link>
+              </div>
               <Link to={"/"} className="logoimg">
                 <img src="../../assets/Logo.png" alt=""/>
               </Link>

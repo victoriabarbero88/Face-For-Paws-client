@@ -8,16 +8,16 @@ class Auth {
     });
   }
 
-  signup({ name, email, password }) {
+  signup({ name, email, password, isShelter }) {
     return this.auth
-      .post("/auth/signup", { name, email, password })
+      .post("/auth/signup", { name, email, password, isShelter })
       .then(({ data }) => data);
     // .then((response) => response.data);
   }
 
-  login({ email, password }) {
+  login({ email, password, isShelter }) {
     return this.auth
-      .post("/auth/login", { email, password })
+      .post("/auth/login", { email, password, isShelter })
       .then(({ data }) => data);
     // .then((response) => response.data);
   }

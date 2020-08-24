@@ -28,7 +28,7 @@ class AddPet extends Component {
     const description = this.state.description;
     const status = this.state.status;
     axios
-      .post("http://localhost:4000/user-routes/pet/add-pet", {name, photo, location, size, age, gender, species, description, status})
+      .post("http://localhost:4000/user-routes/pet/add-pet", {name, photo, location, size, age, gender, species, description, status}, {withCredentials: true})
       .then(() => {
         //this.props.getData();
         this.setState({

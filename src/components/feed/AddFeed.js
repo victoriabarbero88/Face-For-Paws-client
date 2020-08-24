@@ -11,6 +11,7 @@ class AddFeed extends Component {
       description:"",
     };
   }
+
   handleFormSubmit = event => {
     event.preventDefault();
     const name = this.state.name;
@@ -19,15 +20,10 @@ class AddFeed extends Component {
     const description = this.state.description;
 
     axios
-      .post("http://localhost:4000/user-routes/pet/add-pet", {name, photo, title, description})
+      .post("http://localhost:4000/user-routes/feed/add-feed", {name, photo, title, description}, {withCredentials: true})
       .then(() => {
         //this.props.getData();
-        this.setState({
-          name: "",
-          photo: "",
-          title: "",
-          description:"",
-        })
+        this.props.history.push("/feed") 
       })
       .catch(error => console.log(error));
   };
@@ -40,19 +36,20 @@ class AddFeed extends Component {
   render() {
     return (
       <div>
+        <h1>Add a Feed</h1>
         <form onSubmit={this.handleFormSubmit}>
+        <label>Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={e => this.handleChange(e)}
+          />
           <label>Name:</label>
           <input
             type="text"
             name="name"
             value={this.state.name}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
             onChange={e => this.handleChange(e)}
           />
           <label>Photo</label>

@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./components/Profile";
 import AddPet from "./components/pets/AddPet";
+import AddFeed from "./components/feed/AddFeed";
 import ListsPets from "./components/pets/ListsPets";
 import PetDetail from "./components/pets/PetDetail";
 import ShelterDetail from "./components/Shelter/ShelterDetail";
@@ -40,6 +41,7 @@ class App extends Component {
             <PrivateRoute exact path='/shelter/:id' component={ShelterDetail}/>
             <PrivateRoute exact path='/feed/:id' component={FeedDetail}/>
             <PrivateRoute exact path='/user/:id' component={UserDetail}/>
+            <PrivateRoute exact path='/add-feed' component={AddFeed}/>
             
           </Switch>
         </div>

@@ -24,7 +24,7 @@ class UserDetail extends Component {
     const { params } = this.props.match;
     console.log(params)
     axios
-      .get(`http://localhost:4000/user-routes/user/${params.id}`)
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/user/${params.id}`)
       .then(responseFromApi => {
         const theUser = responseFromApi.data;
         //console.log(theUser)

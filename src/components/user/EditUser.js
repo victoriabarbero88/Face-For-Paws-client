@@ -26,7 +26,7 @@ class EditUser extends Component {
     event.preventDefault();
 
     axios
-      .put(`http://localhoste:4000/user-routes/user/${this.props.theUser._id}`, {
+      .put(`${process.env.REACT_APP_API_URI}/user-routes/user/${this.props.theUser._id}`, {
         name,
         photo,
         location,

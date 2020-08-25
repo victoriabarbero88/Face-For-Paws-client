@@ -10,7 +10,7 @@ class ListShelters extends Component {
   }
 
   getAllShelters = () => {
-    axios.get(`http://localhost:4000/user-routes/shelter`).then(responseFromApi => {
+    axios.get(`${process.env.REACT_APP_API_URI}/user-routes/shelter`).then(responseFromApi => {
       this.setState({
         listOfShelters: responseFromApi.data
       });

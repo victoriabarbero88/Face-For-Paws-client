@@ -11,7 +11,7 @@ class ListsPets extends Component {
   }
 
   getAllPets = () => {
-    axios.get(`http://localhost:4000/user-routes/pet`).then(responseFromApi => {
+    axios.get(`${process.env.REACT_APP_API_URI}/user-routes/pet`).then(responseFromApi => {
       this.setState({
         listOfPets: responseFromApi.data
       });

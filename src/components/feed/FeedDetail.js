@@ -23,7 +23,7 @@ class FeedDetail extends Component {
     const { params } = this.props.match;
     //console.log(params)
     axios
-      .get(`http://localhost:4000/user-routes/feed/${params.id}`)
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/feed/${params.id}`)
       .then(resonseFromApi => {
         const theFeed = resonseFromApi.data;
         this.setState(theFeed);

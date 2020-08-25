@@ -14,7 +14,7 @@ class Profile extends Component {
   //getUser = () => {
     
   componentDidMount() {
-    axios.get(`http://localhost:4000/user-routes/profile`, {withCredentials: true}).then(responseFromApi => {
+    axios.get(`${process.env.REACT_APP_API_URI}/user-routes/profile`, {withCredentials: true}).then(responseFromApi => {
       console.log(responseFromApi)
       this.setState(
         responseFromApi.data
@@ -47,8 +47,13 @@ class Profile extends Component {
                     <p>{this.state.description}</p>
                     {this.state.pets.map(pet => {
                       return (
-                        <div>
-                          <p>{pet.name}</p>
+                        <div key={pet._id} className="petLDiv" >
+                          <Link to={`/edit-pet/${pet._id}`} className="petLink">
+                            <p>{pet.name}</p>
+                            {pet.photo[0] ? (
+                              <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
+                            ) : null}
+                          </Link>
                         </div>
                       )
                     })}

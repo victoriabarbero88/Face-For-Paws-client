@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
 class EditPet extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ class EditPet extends Component {
     event.preventDefault();
 
     axios
-      .put(`http://localhoste:4000/user-routes/pet/${this.props.thePet._id}`, {
+      .post(`${process.env.REACT_APP_API_URI}/user-routes/edit-pet/${this.props.thePet._id}`, {
         name,
         photo,
         location,
@@ -41,7 +42,7 @@ class EditPet extends Component {
         species,
         description,
         status
-      })
+      }, {withCredentials: true})
       .then(() => {
         this.props.getThePet();
         this.props.history.push("/pet");
@@ -49,68 +50,27 @@ class EditPet extends Component {
       .catch(error => console.log(error));
   };
   
-  handleChangeName = event => {
-    this.setState({
-      name: event.target.value
-    });
-  };
-  handleChangePhoto = event => {
-    this.setState({
-      photo: event.target.value
-    });
-  };
-  handleChangelocation = event => {
-    this.setState({
-      location: event.target.value
-    });
-  };
-  handleChangeSize = event => {
-    this.setState({
-      size: event.target.value
-    });
-  };
-  handleChangeAge = event => {
-    this.setState({
-      age: event.target.value
-    });
-  };
-  handleChangeGender = event => {
-    this.setState({
-      gender: event.target.value
-    });
-  };
-  handleChangeSpecies = event => {
-    this.setState({
-      species: event.target.value
-    });
-  };
-  handleChangeDescription = event => {
-    this.setState({
-      description: event.target.value
-    });
-  };
-  handleChangeStatus = event => {
-    this.setState({
-      status: event.target.value
-    });
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({[name]: value });
   };
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <hr />
         <h3>Edit form</h3>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChangeName(e)}/>
-          <input type="file" name="photo" value={this.state.photo} onChange={e => this.handleChangePhoto(e)}/>
-          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChangelocation(e)}/>
-          <input type="text" name="size" value={this.state.size} onChange={e => this.handleChangeSize(e)}/>
-          <input type="text" name="age" value={this.state.age} onChange={e => this.handleChangeAge(e)}/>
-          <input type="text" name="gender" value={this.state.gender} onChange={e => this.handleChangeGender(e)}/>
-          <input type="text" name="species" value={this.state.species} onChange={e => this.handleChangeSpecies(e)}/>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChangeDescription(e)}/>
-          <input type="text" name="status" value={this.state.status} onChange={e => this.handleChangeStatus(e)}/>
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
+          <input type="file" name="photo" value={this.state.photo} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="size" value={this.state.size} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="age" value={this.state.age} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="gender" value={this.state.gender} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="species" value={this.state.species} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="status" value={this.state.status} onChange={e => this.handleChange(e)}/>
 
           <input type="submit" value="Submit" />
 

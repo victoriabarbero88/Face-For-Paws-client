@@ -20,7 +20,7 @@ import FeedDetail from "./components/feed/FeedDetail"
 import ListFeed from "./components/feed/ListFeed";
 import ListShelters from "./components/Shelter/listShelters";
 import ListUsers from "./components/user/listUsers";
-
+import EditPet from "./components/pets/EditPet"
 
 
 class App extends Component {
@@ -43,7 +43,7 @@ class App extends Component {
             <PrivateRoute exact path='/feed/:id' component={FeedDetail}/>
             <PrivateRoute exact path='/user/:id' component={UserDetail}/>
             <PrivateRoute exact path='/add-feed' component={AddFeed}/>
-            
+            <PrivateRoute exact path='/edit-pet/:id' component={EditPet}/>
           </Switch>
         </div>
 

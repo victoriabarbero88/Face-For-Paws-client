@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class PetDetail extends Component {
@@ -22,7 +22,7 @@ class PetDetail extends Component {
   getSinglePet = () => {
     const { params } = this.props.match;
     axios
-      .get(`http://localhost:4000/user-routes/pet/${params.id}`)
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/pet/${params.id}`)
       .then(resonseFromApi => {
         const thePet = resonseFromApi.data;
         //console.log(thePet)
@@ -36,7 +36,10 @@ class PetDetail extends Component {
 
   
   render(){
+    
     return (
+
+
       <div className="PetLGeneral">
       <h1>{this.state.name}</h1>
         <div className="petContainer">

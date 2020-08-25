@@ -32,7 +32,7 @@ class EditPet extends Component {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:4000/user-routes/edit-pet/${this.props.thePet._id}`, {
+      .post(`${process.env.REACT_APP_API_URI}/user-routes/edit-pet/${this.props.thePet._id}`, {
         name,
         photo,
         location,

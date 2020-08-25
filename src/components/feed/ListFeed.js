@@ -10,7 +10,7 @@ class ListFeed extends Component {
   }
 
   getAllFeeds = () => {
-    axios.get(`http://localhost:4000/user-routes/feed`).then(responseFromApi => {
+    axios.get(`${process.env.REACT_APP_API_URI}/user-routes/feed`).then(responseFromApi => {
       this.setState({
         listOfFeeds: responseFromApi.data
       });

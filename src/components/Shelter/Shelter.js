@@ -21,7 +21,7 @@ class Shelter extends Component {
   getSingleShelter = () => {
     const { params } = this.props.match;
     axios
-      .get(`${process.env.REACT_APP_API_URI}/user-routes/shelter/${params.id}`)
+      .get(`http://localhost:4000/user-routes/shelter/${params.id}`)
       .then(responseFromApi => {
         const theShelter = responseFromApi.data;
         console.log(theShelter)

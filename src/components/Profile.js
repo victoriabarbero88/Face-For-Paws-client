@@ -14,7 +14,7 @@ class Profile extends Component {
   //getUser = () => {
     
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URI}/user-routes/profile`, {withCredentials: true}).then(responseFromApi => {
+    axios.get(`http://localhost:4000/user-routes/profile`, {withCredentials: true}).then(responseFromApi => {
       console.log(responseFromApi)
       this.setState(
         responseFromApi.data

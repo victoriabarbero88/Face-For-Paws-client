@@ -10,7 +10,7 @@ class ListUsers extends Component {
   }
 
   getAllUsers = () => {
-    axios.get(`${process.env.REACT_APP_API_URI}/user-routes/user`).then(responseFromApi => {
+    axios.get(`http://localhost:4000/user-routes/user`).then(responseFromApi => {
       this.setState({
         listOfUsers: responseFromApi.data
       });

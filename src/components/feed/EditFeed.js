@@ -22,7 +22,7 @@ class EditFeed extends Component {
     event.preventDefault();
 
     axios
-      .put(`${process.env.REACT_APP_API_URI}/user-routes/feed/${this.props.theFeed._id}`, {
+      .put(`http://localhost:4000/user-routes/feed/${this.props.theFeed._id}`, {
         name,
         photo,
         title,

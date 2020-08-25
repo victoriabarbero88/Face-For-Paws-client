@@ -29,7 +29,7 @@ class EditShelter extends Component {
     event.preventDefault();
 
     axios
-      .put(`${process.env.REACT_APP_API_URI}/user-routes/shelter/${this.props.theShelter._id}`, {
+      .put(`http://localhost:4000/user-routes/shelter/${this.props.theShelter._id}`, {
         name,
         photo,
         location,

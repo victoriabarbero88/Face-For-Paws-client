@@ -20,7 +20,7 @@ class AddFeed extends Component {
     const description = this.state.description;
 
     axios
-      .post(`${process.env.REACT_APP_API_URI}/user-routes/feed/add-feed`, {name, photo, title, description}, {withCredentials: true})
+      .post("http://localhost:4000/user-routes/feed/add-feed", {name, photo, title, description}, {withCredentials: true})
       .then(() => {
         //this.props.getData();
         

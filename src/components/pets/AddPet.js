@@ -29,19 +29,10 @@ class AddPet extends Component {
     const status = this.state.status;
     axios
       .post("http://localhost:4000/user-routes/pet/add-pet", {name, photo, location, size, age, gender, species, description, status}, {withCredentials: true})
-      .then(() => {
+      .then((pet) => {
+        console.log(pet)
         //this.props.getData();
-        this.setState({
-          name: "",
-          photo: "",
-          location: "",
-          size: "",
-          age: "",
-          gender: "",
-          species: "",
-          description:"",
-          status: ""
-        })
+        this.props.history.push("/feed") 
       })
       .catch(error => console.log(error));
   };
@@ -53,8 +44,10 @@ class AddPet extends Component {
 
   render() {
     return (
-      <div>
+      <div className="addPetGeneral">
+        <h1>Add a PawFriend + </h1>
         <form onSubmit={this.handleFormSubmit}>
+        <div className="addPetDiv">
           <label>Name:</label>
           <input
             type="text"
@@ -63,12 +56,15 @@ class AddPet extends Component {
             onChange={e => this.handleChange(e)}
           />
           <label>Location:</label>
-          <input
-            type="text"
+          <select
             name="location"
             value={this.state.location}
-            onChange={e => this.handleChange(e)}
-          />
+            onChange={e => this.handleChange(e)}>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Girona">Girona</option>
+              <option value="Tarragona">Tarragona</option>
+              <option value="Lleida">Barcelona</option>
+          </select>
           <label>Photo</label>
           <input
             type="file"
@@ -91,33 +87,50 @@ class AddPet extends Component {
             onChange={e => this.handleChange(e)}
           />
           <label>Gender:</label>
-          <input
-            type="text"
+          <select
             name="gender"
             value={this.state.gender}
-            onChange={e => this.handleChange(e)}
-          />
+            onChange={e => this.handleChange(e)}>
+
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+
+          </select>
+
           <label>Species:</label>
-          <input
-            type="text"
+          <select
             name="species"
             value={this.state.species}
-            onChange={e => this.handleChange(e)}
-          />
+            onChange={e => this.handleChange(e)}>
+
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Bird">Bird</option>
+              <option value="Hamster">Hamster</option>
+              <option value="Rabit">Rabit</option>
+              <option value="Ferret">Ferret</option>
+              <option value="Other">Other</option>
+
+          </select>
+          
           <label>Status:</label>
-          <input
-            type="text"
+          <select
             name="status"
             value={this.state.status}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>description:</label>
+            onChange={e => this.handleChange(e)}>
+              <option value="Adopted">Adopted</option>
+              <option value="Adoptable">Adoptable</option>
+              <option value="Foster">Foster</option>
+          </select>
+          
+          <label>Description:</label>
           <textarea
             name="description"
             value={this.state.description}
             onChange={e => this.handleChange(e)}
           />
           <input type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     )

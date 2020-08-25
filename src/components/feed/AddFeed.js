@@ -23,7 +23,9 @@ class AddFeed extends Component {
       .post("http://localhost:4000/user-routes/feed/add-feed", {name, photo, title, description}, {withCredentials: true})
       .then(() => {
         //this.props.getData();
+        
         this.props.history.push("/feed") 
+
       })
       .catch(error => console.log(error));
   };

@@ -13,7 +13,7 @@ class Navbar extends Component {
         {
           isLoggedIn ? 
           (<>
-
+              
             <nav className='navbar'>
               <div onClick={this.props.history.goBack} className="backimg">
                 <img src="../../assets/back.png" alt=""/>

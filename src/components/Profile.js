@@ -6,35 +6,39 @@ import { withAuth } from "../lib/AuthProvider";
 //import Shelter from "./components/Shelter/Shelter";
 
 class Profile extends Component {
+
+state={user : this.props.user}
+
   render() {
-    this.state = this.props.user;
-    const { isShelter } = this.props;
-    console.log(this.props)
-    console.log(this.state)
+    
+    const { isShelter } = this.props.user;
+    //console.log(this.props)
+    //console.log(this.state)
     return (
       <div>
       { 
         isShelter ? 
         (<>
         <div className="shelterGeneral">
-          <h1>{this.state.name}</h1>
+          <h1>{this.state.user.name}</h1>
           <div className="shelterContainer">
             <div className="shelterStyle">
               <div className="shelterDDiv">
-                {this.state.photo ? (
-                <img src={this.state.photo[0].small} alt="shelter" style={{width: '150%', maxWidth: 200}}/>
+                {this.state.user.photo ? (
+                <img src={this.state.user.photo} alt="shelter" style={{width: '150%', maxWidth: 100}}/>
                 ) : null}
-                <div className="shelterDText">
-                  <p>Location: {this.state.location}</p>
-                  <p>Phone number: {this.state.phone}</p>
-                  <p>Website: <Link src="{this.state.website}">{this.state.website}</Link></p>
-                  <p>{this.state.description}</p>
-                  <p>{this.state.pets}</p>
+                <div className="shelterPText">
+                  <p>Location: {this.state.user.location}</p>
+                  <p>Phone number: {this.state.user.phone}</p>
+                  <p>Website: <Link to="{this.state.website}">{this.state.user.website}</Link></p>
+                  <p>{this.state.user.description}</p>
+                  <p>{this.state.user.pets}</p>
                 </div>
+              </div>
                 <Link to={"/add-pet"} className="shelterDLink">
                 Add a Pet
                 </Link>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -47,7 +51,7 @@ class Profile extends Component {
             <div className="userStyle">
               <div className="userLDiv">
                 {this.state.photo ? (
-                <img src={this.state.photo} alt="user" style={{width: '100%', maxWidth: 200}}/>
+                <img src={this.state.photo} alt="user" style={{width: '100%', maxWidth: 100}}/>
                 ) : null}
                 <div className="userText">
                   <p>Hi, I'm {this.state.name} and I'm from {this.state.location}.</p>

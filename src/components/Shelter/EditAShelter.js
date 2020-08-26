@@ -2,84 +2,63 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-class EditShelter extends Component {
+class EditAShelter extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: this.props.theShelter.name,
-      photo: this.props.theShelter.photo,
-      location: this.props.theShelter.location,
-      phone: this.props.theShelter.phone,
-      website: this.props.theShelter.website,
-      description: this.props.theUser.description,
-      pets: this.props.theShelter.pets,
-    };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    const shelterId = this.props.match.params.id;
+    
+    axios
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/shelter/${shelterId}`)
+      .then(resonseFromApi => {
+        const theShelter = resonseFromApi.data;
+        //console.log(thePet)
+        this.setState(theShelter);
+        //console.log(this.state)
+      })
+      .catch(err => {
+        console.log(err);
+    });
   }
 
   handleFormSubmit = event => {
+    event.preventDefault();
+
     const name = this.state.name;
     const photo = this.state.photo;
     const location = this.state.location;
     const phone = this.state.phone;
     const website = this.state.website;
     const description = this.state.description;
-    const pets = this.state.pets;
-
-
-    event.preventDefault();
+  
+    
+    const shelterId = this.props.match.params.id;
 
     axios
-      .put(`${process.env.REACT_APP_API_URI}/user-routes/shelter/${this.props.theShelter._id}`, {
+      .put(`${process.env.REACT_APP_API_URI}/user-routes/shelter/edit-shelter/${shelterId}`, {
         name,
         photo,
         location,
         phone,
         website,
         description,
-        pets
-      })
+        
+      }, {withCredentials: true})
       .then(() => {
-        this.props.getTheShelter();
-        this.props.history.push("/user");
+        //this.props.getTheUser();
+        this.props.history.push("/profile");
       })
       .catch(error => console.log(error));
   };
   
-  handleChangeName = event => {
-    this.setState({
-      name: event.target.value
-    });
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({[name]: value });
   };
-  handleChangePhoto = event => {
-    this.setState({
-      name: event.target.value
-    });
-  };
-  handleChangeTLocation = event => {
-    this.setState({
-      location: event.target.value
-    });
-  };
-  handleChangePhone = event => {
-    this.setState({
-      phone: event.target.value
-    });
-  };  
-  handleChangeWebsite = event => {
-    this.setState({
-      website: event.target.value
-    });
-  };
-  handleChangeDescription = event => {
-    this.setState({
-      name: event.target.value
-    });
-  };
-  handleChangePets = event => {
-    this.setState({
-      pets: event.target.value
-    });
-  };
+  
 
   render() {
     return (
@@ -90,7 +69,9 @@ class EditShelter extends Component {
           <label>Name:</label>
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChangeName(e)}/>
           <label>Photo:</label>
-          <input type="file" name="photo" value={this.state.photo} onChange={e => this.handleChangePhoto(e)}/>
+          <label>Photo:</label>
+          <img src={this.state.photo} alt="actual"/>
+          <input type="file" name="photo" onChange={e => this.handleChange(e)}/> 
           <label>Location:</label>
           <input type="text" name="location" value={this.state.location} onChange={e => this.handleChangeTLocation(e)}/>
           <label>Phone:</label>
@@ -99,8 +80,6 @@ class EditShelter extends Component {
           <input type="text" name="website" value={this.state.website} onChange={e => this.handleChangeWebsite(e)}/>
           <label>Description:</label>
           <input type="text" name="description" value={this.state.description} onChange={e => this.handleChangeDescription(e)}/>
-          <label>Pets:</label>
-          <input type="text" name="pets" value={this.state.pets} onChange={e => this.handleChangePets(e)}/>
           
           <input type="submit" value="Submit" />
 
@@ -116,4 +95,4 @@ class EditShelter extends Component {
   }
 }
 
-export default EditShelter;
+export default EditAShelter;

@@ -4,17 +4,28 @@ import axios from "axios";
 class EditUser extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: this.props.theUser.name,
-      photo: this.props.theUser.photo,
-      location: this.props.theUser.location,
-      description: this.props.theUser.description,
-      status: this.props.theUser.status,
-      myPets: this.props.theUser.myPets,
-    };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    const userId = this.props.match.params.id;
+    
+    axios
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/user/${userId}`)
+      .then(resonseFromApi => {
+        const theUser = resonseFromApi.data;
+        //console.log(thePet)
+        this.setState(theUser);
+        //console.log(this.state)
+      })
+      .catch(err => {
+        console.log(err);
+    });
   }
 
   handleFormSubmit = event => {
+    event.preventDefault();
+
     const name = this.state.name;
     const photo = this.state.photo;
     const location = this.state.location;
@@ -22,54 +33,29 @@ class EditUser extends Component {
     const status = this.state.status;
     const myPets = this.state.myPets;
 
-
-    event.preventDefault();
+    const userId = this.props.match.params.id;
 
     axios
-      .put(`http://localhost:4000/user-routes/user/${this.props.theUser._id}`, {
+      .put(`${process.env.REACT_APP_API_URI}/user-routes/user/edit-user/${userId}`, {
         name,
         photo,
         location,
         description,
         status,
         myPets
-      })
+      }, {withCredentials: true})
       .then(() => {
-        this.props.getTheUser();
-        this.props.history.push("/user");
+        //this.props.getTheUser();
+        this.props.history.push("/profile");
       })
       .catch(error => console.log(error));
   };
   
-  handleChangeName = event => {
-    this.setState({
-      name: event.target.value
-    });
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({[name]: value });
   };
-  handleChangePhoto = event => {
-    this.setState({
-      name: event.target.value
-    });
-  };
-  handleChangeTLocation = event => {
-    this.setState({
-      location: event.target.value
-    });
-  };
-  handleChangeDescription = event => {
-    this.setState({
-      name: event.target.value
-    });
-  };
-  handleChangeStatus = event => {
-    this.setState({
-      status: event.target.value
-    });
-  };handleChangeMyPets = event => {
-    this.setState({
-      myPets: event.target.value
-    });
-  };
+  
 
   render() {
     return (
@@ -78,17 +64,18 @@ class EditUser extends Component {
         <h3>Edit form</h3>
         <form onSubmit={this.handleFormSubmit}>
           <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChangeName(e)}/>
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <label>Photo:</label>
-          <input type="file" name="photo" value={this.state.photo} onChange={e => this.handleChangePhoto(e)}/>
+          <img src={this.state.photo} alt="actual"/>
+          <input type="file" name="photo" onChange={e => this.handleChange(e)}/> 
           <label>Location:</label>
-          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChangeTLocation(e)}/>
+          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChange(e)}/>
           <label>Description:</label>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChangeDescription(e)}/>
+          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
           <label>Status:</label>
-          <input type="text" name="status" value={this.state.status} onChange={e => this.handleChangeStatus(e)}/>
+          <input type="text" name="status" value={this.state.status} onChange={e => this.handleChange(e)}/>
           <label>My Pets:</label>
-          <input type="text" name="myPets" value={this.state.myPets} onChange={e => this.handleChangeMyPets(e)}/>
+          <input type="text" name="myPets" value={this.state.myPets} onChange={e => this.handleChange(e)}/>
           
           <input type="submit" value="Submit" />
 

@@ -5,20 +5,30 @@ import axios from "axios";
 class EditPet extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: this.props.thePet.name,
-      photo: this.props.thePet.photo,
-      location: this.props.thePet.location,
-      size: this.props.thePet.size,
-      age: this.props.thePet.age,
-      gender: this.props.thePet.gender,
-      species: this.props.thePet.species,
-      description: this.props.thePet.description,
-      status: this.props.thePet.status
-    };
+    this.state = {};
   }
 
+  componentDidMount() {
+    const petId = this.props.match.params.id;
+    
+    axios
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/pet/${petId}`)
+      .then(resonseFromApi => {
+        const thePet = resonseFromApi.data;
+        //console.log(thePet)
+        this.setState(thePet);
+        //console.log(this.state)
+      })
+      .catch(err => {
+        console.log(err);
+    });
+  }
+
+
+
   handleFormSubmit = event => {
+    event.preventDefault();
+    
     const name = this.state.name;
     const photo = this.state.photo;
     const location = this.state.location;
@@ -29,10 +39,9 @@ class EditPet extends Component {
     const description = this.state.description;
     const status = this.state.status;
 
-    event.preventDefault();
-
+    const petId = this.props.match.params.id;
     axios
-      .post(`${process.env.REACT_APP_API_URI}/user-routes/edit-pet/${this.props.thePet._id}`, {
+      .put(`${process.env.REACT_APP_API_URI}/user-routes/pet/edit-pet/${petId}`, {
         name,
         photo,
         location,
@@ -43,9 +52,10 @@ class EditPet extends Component {
         description,
         status
       }, {withCredentials: true})
-      .then(() => {
-        this.props.getThePet();
-        this.props.history.push("/pet");
+      .then((response) => {
+        console.log(response)
+        //this.props.getThePet();
+        this.props.history.push("/profile");
       })
       .catch(error => console.log(error));
   };
@@ -63,7 +73,8 @@ class EditPet extends Component {
         <h3>Edit form</h3>
         <form onSubmit={this.handleFormSubmit}>
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
-          <input type="file" name="photo" value={this.state.photo} onChange={e => this.handleChange(e)}/>
+          <img src={this.state.photo} alt="actual"/>
+          <input type="file" name="photo" onChange={e => this.handleChange(e)}/> 
           <input type="text" name="location" value={this.state.location} onChange={e => this.handleChange(e)}/>
           <input type="text" name="size" value={this.state.size} onChange={e => this.handleChange(e)}/>
           <input type="text" name="age" value={this.state.age} onChange={e => this.handleChange(e)}/>
@@ -71,7 +82,6 @@ class EditPet extends Component {
           <input type="text" name="species" value={this.state.species} onChange={e => this.handleChange(e)}/>
           <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
           <input type="text" name="status" value={this.state.status} onChange={e => this.handleChange(e)}/>
-
           <input type="submit" value="Submit" />
 
         </form>

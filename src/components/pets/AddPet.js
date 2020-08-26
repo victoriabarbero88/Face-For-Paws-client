@@ -7,13 +7,13 @@ class AddPet extends Component {
     this.state = {
       name: "",
       photo: "",
-      location: "",
+      location: "Barcelona",
       size: "",
       age: "",
-      gender: "",
-      species: "",
+      gender: "Female",
+      species: "Dog",
       description:"",
-      status: ""
+      status: "Adopted"
     };
   }
   handleFormSubmit = event => {
@@ -32,7 +32,7 @@ class AddPet extends Component {
       .then((pet) => {
         console.log(pet)
         //this.props.getData();
-        this.props.history.push("/feed") 
+        this.props.history.push("/pet") 
       })
       .catch(error => console.log(error));
   };

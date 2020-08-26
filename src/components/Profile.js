@@ -12,16 +12,27 @@ class Profile extends Component {
   state = {}
 
   //getUser = () => {
-    
-  componentDidMount() {
+  getProfile = () => {
     axios.get(`${process.env.REACT_APP_API_URI}/user-routes/profile`, {withCredentials: true}).then(responseFromApi => {
       console.log(responseFromApi)
       this.setState(
         responseFromApi.data
       );
     });
+  }
+  componentDidMount() {
+    this.getProfile()
   };
 
+  deletePet = (petId) => {
+
+    axios
+      .delete(`${process.env.REACT_APP_API_URI}/user-routes/pet/delete/${petId}`)
+      .then (() =>this.getProfile()) 
+      .catch(err => {
+        console.log(err);
+    });
+  }
   
   render() {
     return (
@@ -54,6 +65,7 @@ class Profile extends Component {
                               <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
                             ) : null}
                           </Link>
+                          <button onClick={() => this.deletePet(pet._id)} >Delete</button>
                         </div>
                       )
                     })}

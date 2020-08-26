@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 class EditAShelter extends Component {
   constructor(props) {
@@ -67,29 +67,22 @@ class EditAShelter extends Component {
         <h3>Edit form</h3>
         <form onSubmit={this.handleFormSubmit}>
           <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChangeName(e)}/>
-          <label>Photo:</label>
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <label>Photo:</label>
           <img src={this.state.photo} alt="actual"/>
           <input type="file" name="photo" onChange={e => this.handleChange(e)}/> 
           <label>Location:</label>
-          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChangeTLocation(e)}/>
+          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChange(e)}/>
           <label>Phone:</label>
-          <input type="text" name="phone" value={this.state.phone} onChange={e => this.handleChangePhone(e)}/>
+          <input type="text" name="phone" value={this.state.phone} onChange={e => this.handleChange(e)}/>
           <label>Website:</label>
-          <input type="text" name="website" value={this.state.website} onChange={e => this.handleChangeWebsite(e)}/>
+          <input type="text" name="website" value={this.state.website} onChange={e => this.handleChange(e)}/>
           <label>Description:</label>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChangeDescription(e)}/>
+          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
           
           <input type="submit" value="Submit" />
 
         </form>
-        <div>
-          <h3>Pets in the shelter:</h3>
-          <Link to={"/add-pet"} className="plusimg">
-            <img src="../../assets/plus.png" alt=""/>
-          </Link>
-        </div>
       </div>
     );
   }

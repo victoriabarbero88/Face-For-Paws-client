@@ -6,7 +6,7 @@ function PrivateRoute({ component: Component, isLoggedIn, ...rest}) {
   return (
     <Route
     {...rest}
-    render={ (props) => isLoggedIn ? <Component {...props} /> : <Redirect to="./feed/feed" />}
+    render={ (props) => isLoggedIn ? <Component {...props} /> : <Redirect to="./profile" />}
     />
   );
 }

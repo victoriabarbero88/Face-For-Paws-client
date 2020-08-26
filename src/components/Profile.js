@@ -33,6 +33,15 @@ class Profile extends Component {
         console.log(err);
     });
   }
+  deleteFeed = (feedId) => {
+
+    axios
+      .delete(`${process.env.REACT_APP_API_URI}/user-routes/feed/delete/${feedId}`)
+      .then (() =>this.getProfile()) 
+      .catch(err => {
+        console.log(err);
+    });
+  }
   
   render() {
     return (
@@ -77,30 +86,11 @@ class Profile extends Component {
                           })}
                         </div>
                     </section>
-                    <section className="FeedList">
-                        <h3>Feed list</h3>
-                        <div className="feedShelter">
-                          {this.state.feed.map(feed => {
-                            return (
-                              <div key={feed._id} className="petLDiv" >
-                                <Link to={`/edit-feed/${feed._id}`} className="petLink">
-                                  <p>{feed.name}</p>
-                                  {feed.photo ? (
-                                    <img src={feed.photo} alt="pet" style={{width: '100%', maxWidth: 200}}/>
-                                  ) : null}
-                                </Link>
-                                <button onClick={() => this.deletePet(feed._id)} >Delete</button>
-                              </div>
-                            )
-                          })}
-                        </div>
-                    </section>
                   </div>
                 </div>
                   <Link to={"/add-pet"} className="shelterDLink">
                   Add a Pet
                   </Link>
-                
               </div>
             </div>
           </div>

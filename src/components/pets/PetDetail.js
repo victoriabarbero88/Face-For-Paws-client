@@ -49,8 +49,8 @@ class PetDetail extends Component {
               {this.state.photo ? (
                 <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%', maxWidth: 200}}/>
                 ) : null}
-              <p>Hi, my name is {this.state.name} and I'm a {this.state.age} {this.state.gender} {this.state.species} I'm living in {this.state.location}</p>
-              <p>Let me explain you a little bit about me:{this.state.description}</p>
+              <p>Hi, my name is {this.state.name} and I'm a {this.state.age} {this.state.gender} {this.state.species} I'm from {this.state.location}</p>
+              <p>Let me explain you a little bit about me {this.state.description}</p>
             </div>
             <Link to={"/pet"} className="petLink">
             Back to pets

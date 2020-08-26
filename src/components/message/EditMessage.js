@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class EditFeed extends Component {
+class EditMessage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   componentDidMount() {
-    const feedId = this.props.match.params.id;
+    const messageId = this.props.match.params.id;
     
     axios
-      .get(`${process.env.REACT_APP_API_URI}/user-routes/feed/${feedId}`)
+      .get(`${process.env.REACT_APP_API_URI}/user-routes/message/${messageId}`)
       .then(resonseFromApi => {
-        const theFeed = resonseFromApi.data;
+        const theMessage = resonseFromApi.data;
         //console.log(thePet)
-        this.setState(theFeed);
+        this.setState(theMessage);
         //console.log(this.state)
       })
       .catch(err => {
@@ -32,18 +32,18 @@ class EditFeed extends Component {
     const description = this.state.description;
 
 
-    const feedId = this.props.match.params.id;
+    const messageId = this.props.match.params.id;
    
 
     axios
-      .put(`${process.env.REACT_APP_API_URI}/user-routes/feed/edit-feed/${feedId}`, {
+      .put(`${process.env.REACT_APP_API_URI}/user-routes/message/edit-message/${messageId}`, {
         name,
         photo,
         title,
         description
       })
       .then(() => {
-        this.props.history.push("/profile");
+        this.props.history.push("/message");
       })
       .catch(error => console.log(error));
   };
@@ -57,7 +57,7 @@ class EditFeed extends Component {
     return (
       <div>
         <hr />
-        <h3>Edit form</h3>
+        <h3>Edit message</h3>
         <form onSubmit={this.handleFormSubmit}>
           <label>Name:</label>
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
@@ -77,4 +77,4 @@ class EditFeed extends Component {
   }
 }
 
-export default EditFeed;
+export default EditMessage;

@@ -45,13 +45,17 @@ class PetDetail extends Component {
         <div className="petContainer">
           <div className="petLStyle">
             <div className="petLDiv">
-            <h2>I'm available for {this.state.status}</h2>
+            <h2>I'm {this.state.status}</h2>
               {this.state.photo ? (
                 <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%', maxWidth: 200}}/>
                 ) : null}
               <p>Hi, my name is {this.state.name} and I'm a {this.state.age} {this.state.gender} {this.state.species} I'm from {this.state.location}</p>
-              <p>Let me explain you a little bit about me {this.state.description}</p>
+              <p>Let me explain you a little bit about me, {this.state.description}</p>
             </div>
+            <Link to={`/shelter/${this.state.shelter}`} className="petLink">
+            I'm in this shelter
+            </Link>
+            <br/>
             <Link to={"/pet"} className="petLink">
             Back to pets
             </Link>

@@ -24,6 +24,7 @@ class Navbar extends Component {
               <Link to={"/profile"} className="profileimg">
                 <img src="../../assets/profile.png" alt=""/>
               </Link>
+              <button className='logout-button' onClick={logout}>Logout</button>
             </nav>
 
             <div className="tabs">
@@ -37,24 +38,22 @@ class Navbar extends Component {
                 <button className='shelter-button'>Shelters</button>
               </Link>
               <Link to='/user'>
-                <button className='shelter-button'>PawFriends</button>
+                <button className='usesr-button'>PawFriends</button>
               </Link>
-              <button className='logout-button' onClick={logout}>Logout</button>
+              {/* <Link to='/message'>
+                <button className='message-button'>message</button>
+              </Link> */}
             </div> 
           </>) 
           : 
           (<>
           
             <nav className='navbar'>
-              <div onClick={this.props.history.goBack} className="backimg">
-                <img src="../../assets/back.png" alt=""/>
-              </div>
+              
               <Link to={"/"} className="logoimg">
                 <img src="../../assets/Logo.png" alt=""/>
               </Link>
-              <Link to={"/login"} className="profileimg">
-                <img src="../../assets/profile.png" alt=""/>
-              </Link>
+              
             </nav>
 
             <div className="tabs">

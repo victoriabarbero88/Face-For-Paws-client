@@ -42,7 +42,7 @@ class SheleterDetail extends Component {
           <div className="shelterStyle">
             <div className="shelterDDiv">
               {this.state.photo ? (
-              <img src={this.state.photo[0].small} alt="shelter" style={{width: '150%', maxWidth: 200}}/>
+              <img src={this.state.photo[0].medium} alt="shelter" style={{width: '150%', maxWidth: 200}}/>
               ) : null}
               <div className="shelterDText">
                 <p>Location: {this.state.location}</p>
@@ -50,6 +50,7 @@ class SheleterDetail extends Component {
                 <p>Website: <Link src="{this.state.website}">{this.state.website}</Link></p>
                 <p>{this.state.description}</p>
                 <p>{this.state.pets}</p>
+                <Link to={"/add-message"}>Contact</Link>
               </div>
               <Link to={"/shelter"} className="shelterDLink">
               Back to Shelters

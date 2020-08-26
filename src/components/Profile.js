@@ -61,7 +61,7 @@ class Profile extends Component {
               <div className="shelterStyle">
                 <div className="shelterDDiv">
                   {this.state.photo ? (
-                  <img src={this.state.photo} alt="shelter" style={{width: '150%', maxWidth: 100}}/>
+                  <img src={this.state.photo[0].medium} alt="shelter" style={{width: '150%', maxWidth: 100}}/>
                   ) : null}
                   <div className="shelterPText">
                     <p>Location: {this.state.location}</p>
@@ -86,11 +86,30 @@ class Profile extends Component {
                           })}
                         </div>
                     </section>
+                    <section className="FeedList">
+                        <h3>Feed list</h3>
+                        <div className="feedShelter">
+                          {this.state.feed.map(feed => {
+                            return (
+                              <div key={feed._id} className="petLDiv" >
+                                <Link to={`/edit-feed/${feed._id}`} className="feedLink">
+                                  <p>{feed.name}</p>
+                                  {feed.photo ? (
+                                    <img src={feed.photo} alt="feed" style={{width: '100%', maxWidth: 200}}/>
+                                  ) : null}
+                                </Link>
+                                <button onClick={() => this.deleteFeed(feed._id)} >Delete</button>
+                              </div>
+                            )
+                          })}
+                        </div>
+                    </section>
                   </div>
                 </div>
                   <Link to={"/add-pet"} className="shelterDLink">
                   Add a Pet
                   </Link>
+                
               </div>
             </div>
           </div>

@@ -21,8 +21,14 @@ import ListFeed from "./components/feed/ListFeed";
 import ListShelters from "./components/Shelter/listShelters";
 import ListUsers from "./components/user/listUsers";
 import EditPet from "./components/pets/EditPet"
+import EditFeed from "./components/feed/EditFeed"
 import EditUser from "./components/user/EditUser"
 import EditAShelter from "./components/Shelter/EditAShelter"
+import EditMessage from "./components/message/EditMessage"
+import AddMessage from "./components/message/AddMessage"
+import ListMessage from "./components/message/ListMessage"
+import MessageDetail from "./components/message/EditMessage"
+
 
 
 class App extends Component {
@@ -45,9 +51,14 @@ class App extends Component {
             <PrivateRoute exact path='/feed/:id' component={FeedDetail}/>
             <PrivateRoute exact path='/user/:id' component={UserDetail}/>
             <PrivateRoute exact path='/add-feed' component={AddFeed}/>
+            <PrivateRoute exact path='/edit-feed/:id' component={EditFeed}/>
             <PrivateRoute exact path='/edit-pet/:id' component={EditPet}/>
             <PrivateRoute exact path='/edit-user/:id' component={EditUser}/>
             <PrivateRoute exact path='/edit-shelter/:id' component={EditAShelter}/>
+            <PrivateRoute exact path='/edit-message/:id' component={EditMessage}/>
+            <PrivateRoute exact path='/add-message' component={AddMessage}/>
+            <PrivateRoute exact path='/message/:id' component={MessageDetail}/>
+            <PrivateRoute exact path='/message' component={ListMessage}/>
           </Switch>
         </div>
 

@@ -34,7 +34,7 @@ class ListsPets extends Component {
                   <Link to={`/pet/${pet._id}`} className="petLink">
                     <h3>Hi! I'm {pet.name}</h3>
                     {pet.photo[0] ? (
-                      <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
+                      <img src={pet.photo[0].medium} alt="pet" style={{width: '100%', maxWidth: 200}}/>
                     ) : null}
                   </Link>
                 </div>

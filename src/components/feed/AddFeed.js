@@ -38,7 +38,9 @@ class AddFeed extends Component {
   render() {
     return (
       <div className="addFeedGeneral">
-        <h1>Add a Feed</h1>
+        <header className="addFeedHeader">
+          <h1>Add a Feed</h1>
+        </header>
         <div className="">
           <form onSubmit={this.handleFormSubmit}>
           <div className="addFeedDiv">
@@ -71,7 +73,7 @@ class AddFeed extends Component {
               onChange={e => this.handleChange(e)}
               placeholder="Description"
             />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" className="button"/>
             <img src="" alt=""/>
           </div>
           </form>

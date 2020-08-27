@@ -50,7 +50,8 @@ class UserDetail extends Component {
               <div className="userText">
                 <p>Hi, I'm {this.state.name} and I'm from {this.state.location}.</p>
                 <p>I'm available for {this.state.status}</p>
-                <p>If I could say omething about me, {this.state.description}</p>
+                <p>Something about me: {this.state.description}</p>
+                <Link to={"/add-message"}>Contact</Link>
               </div>
               <div className="userLinkContainer">
                 <Link to={"/user"} className="userLink" >Back to Users</Link>

@@ -37,19 +37,29 @@ class FeedDetail extends Component {
   
   render(){
     return (
-      <div className="feedLGeneral">
-      <h1>A {this.state.name}'s Feed</h1>
+      <div className="feedDGeneral">
+        <header className="FeedDHeader">
+          <h1>A {this.state.name}'s Feed</h1>
+        </header>
         <div className="feedLContainer">
-          <div className="feedDiv">
-            <h3>{this.state.title}</h3>
-            <img src={this.state.photo} alt="feed" style={{width: '100%', maxWidth: 300}} />
-            <div className="feedText" >
-              <p>{this.state.description}</p>
-              <p className="feedName">{this.state.name}</p>
+          <div className="feedDDiv">
+            <div className="feedArticle">
+              <h3>{this.state.title}</h3>
+              <img src={this.state.photo} alt="feed" style={{width: '100%', maxWidth: 300}} />
+              <div className="feedText" >
+                <p>{this.state.description}</p>
+                <p className="feedName">{this.state.name}</p>
+              </div>
             </div>
-            <Link to={"/feed"}className="feedLink">
-            Back to Feed
-            </Link>
+            <div className="feedDLinks">
+              <div >
+                <button className="button"><Link to={"/add-message"} className="feedDLink">Contact {this.state.name}</Link></button>
+                <br/>
+                <button className="button"><Link to={`/shelter/${this.state.shelter}`} className="feedDLink">See {this.state.name}'s profile</Link></button>
+                <br/>
+                <button className="button"><Link to={"/feed"} className="feedDLink">Back to Feeds</Link></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

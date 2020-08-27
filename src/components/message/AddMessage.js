@@ -38,7 +38,9 @@ class AddMessage extends Component {
   render() {
     return (
       <div className="addMessageGeneral">
-        <h1>Send a Message</h1>
+        <header className="addMessageHeader">
+          <h1>Send a Message</h1>
+        </header>
         <div className="">
           <form onSubmit={this.handleFormSubmit}>
           <div className="addMessageDiv">

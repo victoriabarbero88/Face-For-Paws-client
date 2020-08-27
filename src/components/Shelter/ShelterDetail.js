@@ -34,7 +34,6 @@ class SheleterDetail extends Component {
   };
 
   render(){
-    //console.log(this.state)
     return (
       <div className="shelterGeneral">
         <h1>{this.state.name}</h1>
@@ -47,11 +46,25 @@ class SheleterDetail extends Component {
               <div className="shelterDText">
                 <p>Location: {this.state.location}</p>
                 <p>Phone number: {this.state.phone}</p>
-                <p>Website: <Link src="{this.state.website}">{this.state.website}</Link></p>
+                <p>Website: <Link src={this.state.website}>{this.state.website}</Link></p>
                 <p>{this.state.description}</p>
                 <p>{this.state.pets}</p>
+                <div className="petShelter">
+                  {/* {this.state.pets.map(pet => {
+                    return (
+                    <div key={pet._id} className="petLDiv" >
+                      <Link to={`/pet/${pet._id}`} className="petLink">
+                        <p>{pet.name}</p>
+                          {pet.photo[0] ? (
+                        <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
+                            ) : null}
+                      </Link>
+                    </div> 
+                    )
+                     })} */}
+                </div>  
                 <Link to={"/add-message"}>Contact</Link>
-              </div>
+              
               <Link to={"/shelter"} className="shelterDLink">
               Back to Shelters
               </Link>
@@ -59,9 +72,9 @@ class SheleterDetail extends Component {
           </div>
         </div>
       </div>
+      </div>
     )
   }
 }
 
 export default SheleterDetail;
-

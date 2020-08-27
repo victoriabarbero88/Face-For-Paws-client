@@ -6,7 +6,7 @@ class Navbar extends Component {
   render() {
     //traemos datos de props desde el "padre" para renderizar una vista o otra, si esta logeado muestra el email y boton de logout
     //si no esta logeado muestra botones de sign y login
-    const { logout, isLoggedIn } = this.props;
+    const { isLoggedIn } = this.props;
 
     return (
       <div>
@@ -23,37 +23,36 @@ class Navbar extends Component {
               </Link>
               <Link to={"/profile"} className="profileimg">
                 <img src="../../assets/profile.png" alt=""/>
-              </Link>
-              <button className='logout-button' onClick={logout}>Logout</button>
+              </Link>    
             </nav>
 
-            <div className="tabs">
-              <Link to='/feed'>
-                <button className='feed-button actiive'>Feed</button>
-              </Link>
-              <Link to='/pet'>
-                <button className='pet-button'>PawFamily</button>
-              </Link>
-              <Link to='/shelter'>
-                <button className='shelter-button'>Shelters</button>
-              </Link>
-              <Link to='/user'>
-                <button className='usesr-button'>PawFriends</button>
-              </Link>
-              {/* <Link to='/message'>
-                <button className='message-button'>message</button>
-              </Link> */}
-            </div> 
+            <div className="blockNavTabs">
+              <div className="tabs">
+                <Link to='/feed'>
+                  <button className='feed-button actiive'>Feed</button>
+                </Link>
+                <Link to='/pet'>
+                  <button className='pet-button'>PawFamily</button>
+                </Link>
+                <Link to='/shelter'>
+                  <button className='shelter-button'>Shelters</button>
+                </Link>
+                <Link to='/user'>
+                  <button className='usesr-button'>PawFriends</button>
+                </Link>
+                {/* <Link to='/message'>
+                  <button className='message-button'>message</button>
+                </Link> */}
+              </div> 
+            </div>
           </>) 
           : 
           (<>
           
             <nav className='navbar'>
-              
               <Link to={"/"} className="logoimg">
                 <img src="../../assets/Logo.png" alt=""/>
               </Link>
-              
             </nav>
 
             <div className="tabs">

@@ -24,7 +24,14 @@ class ListFeed extends Component {
   render() {
     return (
       <div className="feedLGeneral">
-        <h1>Feeds</h1>
+        <header className="FeedHeader">
+          <div className="feedLTitlePlus">
+            <Link to={"/add-feed"} className="plusimg">
+              <img src="../../assets/plus.png" alt=""/>
+            </Link>
+          </div>
+          <h1>Feeds</h1>
+          </header>
         <div className="feedLContainer">
           <div className="feedLStyle">
             {this.state.listOfFeeds.map(feed => {
@@ -32,7 +39,9 @@ class ListFeed extends Component {
                 <div key={feed._id} className="feedDiv">
                   <Link to={`/feed/${feed._id}`} className="feedLink">
                     <h3>{feed.title}</h3>
-                    <img src={feed.photo} alt="feed" style={{width: '100%', maxWidth: 300}}/>
+                    <div className="feedListImage">
+                      <img src={feed.photo} alt="feed" style={{width: '100%', maxWidth: 300}}/>
+                    </div>
                   </Link>
                 </div>
               );
@@ -40,9 +49,6 @@ class ListFeed extends Component {
           </div>
         </div>
         <div>
-          <Link to={"/add-feed"} className="plusimg">
-            <img src="../../assets/plus.png" alt=""/>
-          </Link>
         </div>
       </div>
     );

@@ -44,6 +44,7 @@ class Profile extends Component {
   }
   
   render() {
+    const { logout } = this.props;
     return (
     this.state ? (
   
@@ -53,9 +54,9 @@ class Profile extends Component {
            ? 
           (<>
           <div className="shelterGeneral">
-            <Link to={`/edit-shelter/${this.state._id}`} className="shelterDLink">
-              Edit
-            </Link>
+            <Link to={"/add-pet"} className="shelterDLink">Add a Pet</Link>
+            <Link to={`/edit-shelter/${this.state._id}`} className="shelterDLink">Edit</Link>
+            <button className='logout-button' onClick={logout}>Logout</button>
             <h1>{this.state.name}</h1>
             <div className="shelterContainer">
               <div className="shelterStyle">
@@ -106,10 +107,6 @@ class Profile extends Component {
                     </section>
                   </div>
                 </div>
-                  <Link to={"/add-pet"} className="shelterDLink">
-                  Add a Pet
-                  </Link>
-                
               </div>
             </div>
           </div>
@@ -118,9 +115,8 @@ class Profile extends Component {
           (<>
           <div className="userLGeneral">
             <h1>{this.state.name}</h1>
-            <Link to={`/edit-user/${this.state._id}`} className="shelterDLink">
-              Edit
-            </Link>
+            <Link to={`/edit-user/${this.state._id}`} className="shelterDLink">Edit</Link>
+            <button className='logout-button' onClick={logout}>Logout</button>
             <div className="userContainer">
               <div className="userStyle">
                 <div className="userLDiv">

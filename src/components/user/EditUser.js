@@ -90,9 +90,7 @@ class EditUser extends Component {
         <form onSubmit={this.handleFormSubmit}>
         <div className="Div">
         
-        
-          
-          <img src={this.state.photo} alt="actual" style={{width:'100%'}}/>
+          <img src={this.state.photo} alt="actual" style={{width:'100%', borderRadius: '5%'}}/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/> 
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <select

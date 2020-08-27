@@ -34,7 +34,7 @@ class Login extends Component {
     return (
       <div className="loginHeader">
         <h1>Login</h1>
-        <div className="loginStyle">
+        <div>
           <form onSubmit={this.handleFormSubmit}>
           <div className="logDiv">
             <label>Are you a Shelter? </label>
@@ -46,7 +46,8 @@ class Login extends Component {
           
             <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
             <br/>
-            <input type="submit" value="Login" id="loginButton" />
+
+            <input type="submit" value="Login" />
             </div>
           </form>
         </div>

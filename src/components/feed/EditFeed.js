@@ -83,7 +83,7 @@ class EditFeed extends Component {
         </header>
         <form onSubmit={this.handleFormSubmit}>
       <div className="Div">
-          <img src={this.state.photo} alt="actual"/>
+          <img src={this.state.photo} alt="actual" style={{width: '100%'}}/>
          
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/> 

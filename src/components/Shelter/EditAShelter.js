@@ -82,26 +82,36 @@ class EditAShelter extends Component {
 
   render() {
     return (
-      <div>
+      <div className="editComponent">
         <hr />
-        <h3>Edit form</h3>
+        <header className="UserHeader">
+          <h1>Edit form</h1>
+        </header>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
-          <label>Photo:</label>
-          <img src={this.state.photo} alt="actual"/>
+        <div className="Div">
+          <img src={this.state.photo} alt="actual" style={{width:'100%', borderRadius: '5%'}}/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/> 
-          <label>Location:</label>
-          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChange(e)}/>
-          <label>Phone:</label>
-          <input type="text" name="phone" value={this.state.phone} onChange={e => this.handleChange(e)}/>
-          <label>Website:</label>
-          <input type="text" name="website" value={this.state.website} onChange={e => this.handleChange(e)}/>
-          <label>Description:</label>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
+        
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           
-          <input type="submit" value="Submit" />
+          <select
+            name="location"
+            value={this.state.location}
+            onChange={e => this.handleChange(e)}>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Girona">Girona</option>
+              <option value="Tarragona">Tarragona</option>
+              <option value="Lleida">Barcelona</option>
+          </select> 
 
+          <input type="text" name="phone" value={this.state.phone} onChange={e => this.handleChange(e)}/>
+        
+          <input type="text" name="website" value={this.state.website} onChange={e => this.handleChange(e)}/>
+        
+          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)} className="Divtext"/>
+          
+          <input type="submit" value="Submit" className="button" />
+          </div>
         </form>
       </div>
     );

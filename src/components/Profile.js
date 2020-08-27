@@ -49,14 +49,11 @@ class Profile extends Component {
     console.log("The file to be uploaded is: ", e.target.files[0]);
   
     const uploadData = new FormData();
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
     uploadData.append("photo", e.target.files[0]);
     
     service.handleUpload(uploadData)
     .then(response => {
         console.log('response is: ', response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
         this.setState({ photo: response.secure_url });
       })
       .catch(err => {
@@ -74,43 +71,46 @@ class Profile extends Component {
            ? 
           (<>
           <div className="PetGeneral">
-          <header className="UserHeader">
-            <div className="profileButtons">
-              <button className='Pbutton' >
-                <Link to={"/add-pet"} className="petDLink">
-                  Add a Pet
-                </Link>
-              </button>
-              <button className='Pbutton'>
-                <Link to={`/edit-shelter/${this.state._id}`} className="petDLink">
-                  Edit
-                </Link>
-              </button>
-              <button className='Pbutton' onClick={logout}>
-                Logout
-              </button>
-            </div>
-            <h1>{this.state.name}</h1>
-            </header>
-            <div className="PetContainer">
-              <div className="">
-                <div className="petDDiv">
-                {this.state.photo[0].medium ? (
-                      <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%'}}/>
-                    ) : 
-                      <img src={this.state.photo} alt="pet" style={{width: '100%'}}/>
-                      }
-                  <div className="shelterPText">
-                    <p>Location: {this.state.location}</p>
-                    <p>Phone number: {this.state.phone}</p>
-                    <p>Website: <Link to="{this.state.website}">{this.state.website}</Link></p>
-                    <p>{this.state.description}</p>
-                    <section className="petList">
+            <header className="petDHeader">
+              <h1>{this.state.name}'s Profile</h1>
+              <div>
+                <button className='Pbutton' >
+                  <Link to={"/add-pet"} className="petDLink">
+                    Add a Pet
+                  </Link>
+                </button>
+                <button className='Pbutton'>
+                  <Link to={`/edit-shelter/${this.state._id}`} className="petDLink">
+                    Edit
+                  </Link>
+                </button>
+                <button className='Pbutton' onClick={logout}>
+                  Logout
+                </button>
+              </div>
+              
+              </header>
+              <div className="PetContainer">
+                <div>
+                  <div className="petDDiv">
+                    {this.state.photo[0].medium ? (
+                          <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%'}}/>
+                        ) : 
+                          <img src={this.state.photo} alt="pet" style={{width: '100%'}}/>
+                          }
+                    <div>
+                      <p>Location: {this.state.location}</p>
+                      <p>Phone number: {this.state.phone}</p>
+                      <p>Website: <Link to="{this.state.website}">{this.state.website}</Link></p>
+                      <p>{this.state.description}</p>
+                      <section className="h3PetL">
+                      <hr/>
+                      <div className="petContainer">
                         <h3>Pet list</h3>
-                        <div className="petShelter">
+                        <div>
                           {this.state.pets ? this.state.pets.map(pet => {
                             return (
-                              <div key={pet._id} className="petLDiv" >
+                              <div key={pet._id} className="petDDiv" >
                                 <Link to={`/edit-pet/${pet._id}`} className="petLink">
                                   <p>{pet.name}</p>
                                   {pet.photo[0].medium ? (
@@ -119,42 +119,45 @@ class Profile extends Component {
                                       <img src={pet.photo} alt="pet" style={{width: '100%'}}/>
                                       }
                                 </Link>
-                                <button className='Pbutton' onClick={() => this.deletePet(pet._id)} >Delete</button>
+                                <button className='button' onClick={() => this.deletePet(pet._id)} >Delete</button>
                               </div>
                             )
                           }) : null }
                         </div>
-                    </section>
-                    <section className="FeedList">
-                        <h3>Feed list</h3>
-                        <div className="feedShelter">
-                          {this.state.feed ? this.state.feed.map(feed => {
-                            return (
-                              <div key={feed._id} className="petLDiv" >
-                                <Link to={`/edit-feed/${feed._id}`} className="feedLink">
-                                  <p>{feed.name}</p>
-                                  {feed.photo ? (
-                                    <img src={feed.photo} alt="feed" style={{width: '100%'}}/>
-                                  ) : null}
-                                </Link>
-                                <button className='Pbutton' onClick={() => this.deleteFeed(feed._id)} >Delete</button>
-                              </div>
-                            )
-                          }) : null }
                         </div>
-                    </section>
+                      </section>
+                      <section className="h3PetL">
+                        <div className="petDDiv">
+                        <hr/>
+                          <h3>Feed list</h3>
+                          <div>
+                            {this.state.feed ? this.state.feed.map(feed => {
+                              return (
+                                <div key={feed._id} className="petDDiv" >
+                                  <Link to={`/edit-feed/${feed._id}`} className="PetDLink">
+                                    {feed.photo ? (
+                                      <img src={feed.photo} alt="feed" style={{width: '100%'}}/>
+                                    ) : null}
+                                  </Link>
+                                  <button className='button' onClick={() => this.deleteFeed(feed._id)} >Delete</button>
+                                </div>
+                              )
+                            }) : null }
+                        </div>
+                      </div>
+                      </section>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </>) 
           : 
           (<>
           <div className="PetLGeneral">
             <header className="petDHeader">
-              
-              <div className="profileButtons">
+            <h1>{this.state.name}'s Profile</h1>
+              <div>
                 <button className='Pbutton'>
                   <Link to={`/edit-user/${this.state._id}`} className="petDLink">
                     Edit Profile
@@ -164,46 +167,44 @@ class Profile extends Component {
                   Logout
                 </button>
               </div>
-              <h1>{this.state.name}' Profile</h1>
             </header>
             <div className="petContainer">
-              <div className="petStyle">
+              <div>
                 <div className="petDDiv">
                   {this.state.photo ? (
                   <img src={this.state.photo} alt="user" style={{width: '100%'}}/>
                   ) : null}
-                  <div className="userText">
+                  <div>
                     <p>Hi, I'm {this.state.name} and I'm from {this.state.location}.</p>
                     <p>I'm available for {this.state.status}</p>
                     <p>If I could say omething about me, {this.state.description}</p>
                   </div>
-                  <div className="userLinkContainer">
+                  <div>
                     <button className="button">
                       <Link to={"/user"} className="petDLink" >Back to Users</Link>
                     </button>
-                    
                   </div>
                 </div>
-                <section className="profileList">
-                <div className="petContainer">
-                        <h3 id="profh3">Feed list</h3>
-                        <div className="feedShelter">
-                          {this.state.feed ? this.state.feed.map(feed => {
-                            return (
-                              <div key={feed._id} className="petLDiv" >
-                                <Link to={`/edit-feed/${feed._id}`} className="feedLink">
-                                  <p>{feed.name}</p>
-                                  {feed.photo ? (
-                                    <img src={feed.photo} alt="feed" style={{width: '100%'}}/>
-                                  ) : null}
-                                </Link>
-                                <button className='Pbutton' onClick={() => this.deleteFeed(feed._id)} >Delete</button>
-                              </div>
-                            )
-                          }) : null }
+                <section className="h3PetL">
+                <hr/>
+                  <div className="petContainer">
+                    <h3>Feed list</h3>
+                    <div>
+                      {this.state.feed ? this.state.feed.map(feed => {
+                        return (
+                        <div key={feed._id} className="petDDiv" >
+                          <Link to={`/edit-feed/${feed._id}`} className="petDLink">
+                              {feed.photo ? (
+                            <img src={feed.photo} alt="feed" style={{width: '100%'}}/>
+                              ) : null}
+                          </Link>
+                          <button className='button' onClick={() => this.deleteFeed(feed._id)} >Delete</button>
                         </div>
-                      </div>
-                    </section>
+                           )
+                        }) : null }
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
@@ -211,10 +212,7 @@ class Profile extends Component {
           )}
         </div>
       )
-    
-    
     : 
-    
     (<p>"loading"</p>)
   )
  } 

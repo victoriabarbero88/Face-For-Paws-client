@@ -12,7 +12,6 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin-top: 8%;
-  
 }
 .logoimg img {
   height: 100px;
@@ -28,7 +27,6 @@ body {
 .plusimg img {
   height: 40px;
   padding: 8px;
-  
 }
 
 
@@ -40,45 +38,50 @@ body {
   color: white;
   font-weight: bolder;
 }
-.blockNavTabs {
-  justify-content: center;
 
-}
 
 /*LOGIN*/
-.loginContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
+
+.loginHeader {
+  background-image: url(https://i.pinimg.com/564x/8f/18/72/8f18726aabdf7f76e22c9a3b4f32abf6.jpg);
+  width: 100%;
+  color: white;
+  padding-bottom: 20%;
+  text-align: center;
 }
 
+.logDiv{
+  display: flex;
+  flex-direction: column;
+  margin: 0 20%;
+}
 
 
 /*APP CONTAINER*/
 .container {
   background-color: rgba(223, 183, 173, 0.856);
-  margin: 0 5%;
+  /* margin: 0 5%; */
 }
 .tabs {
-  margin: 0 5%;
+  margin-top: 5% ;
 }
 
 
 /*PROFILE CONTAINER*/
-
-
 .Pbutton {
   padding: 1%;
-  border-color:rgba(163, 27, 27, 0.719);
-  background-color: rgba(214, 40, 40, 0.719);
+  border-color:rgba(4, 5, 51, 0.719);
+  background-color: rgba(40, 52, 214, 0.719);
   color: white;
-  
+  margin-top: 8%;
 }
-#profh3 h3 {
-  display: flex;
-  text-align:center;
-  justify-content: center;
+
+.h3PetL h3{
+  font-size: 1.9rem;
+}
+
+.petDDiv img{
+  border-radius: 5%;
 }
 /*USER*/
 
@@ -104,8 +107,15 @@ body {
   text-decoration: none;
   color: black;
 }
-
-
+.Div{
+  background-color: white;
+  padding: 10%;
+  border-radius: 5%;
+}
+.petDHeader h1{
+  text-align: center;
+  padding-top: 3%;
+}
 /*USER DETAILS*/
 .userDContainer {
   padding: 4%;
@@ -195,7 +205,7 @@ body {
 }
 .petDDiv {
   margin:  5%;
-  border-radius: 10%;
+  border-radius: 3%;
   background-color: white;
   padding: 10%;
 }
@@ -441,27 +451,9 @@ body {
   margin: 5px;
 }
 
-/*LOGIN*/
 
-.loginHeader {
-  background-image: url(https://i.pinimg.com/564x/8f/18/72/8f18726aabdf7f76e22c9a3b4f32abf6.jpg);
-  width: 100%;
-  color: white;
-  padding-bottom: 20%;
-  text-align: center;
-}
 
-.logDiv{
-  display: flex;
-  flex-direction: column;
-  margin: 0 20%;
-  
-}
 
-#loginButton {
-  display: flex;
-  justify-content: center;
-}
 
 /*USER DETAIL*/
 .UserHeader {

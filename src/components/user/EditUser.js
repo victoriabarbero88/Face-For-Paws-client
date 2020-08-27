@@ -82,16 +82,19 @@ class EditUser extends Component {
 
   render() {
     return (
-      <div>
+      <div className="editComponent">
         <hr />
-        <h3>Edit form</h3>
+        <header className="UserHeader">
+        <h1>Edit form</h1>
+        </header>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
-          <label>Photo:</label>
-          <img src={this.state.photo} alt="actual"/>
+        <div className="Div">
+        
+        
+          
+          <img src={this.state.photo} alt="actual" style={{width:'100%'}}/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/> 
-          <label>Location:</label>
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <select
             name="location"
             value={this.state.location}
@@ -101,9 +104,9 @@ class EditUser extends Component {
               <option value="Tarragona">Tarragona</option>
               <option value="Lleida">Barcelona</option>
           </select> 
-          <label>Description:</label>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
-          <label>Status:</label>
+          
+          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)} className="Divtext"/>
+          
           <select
             name="status"
             value={this.state.status}
@@ -115,11 +118,11 @@ class EditUser extends Component {
           </select> 
           
           <input type="text" name="status" value={this.state.status} onChange={e => this.handleChange(e)}/>
-          <label>My Pets:</label>
+        
           <input type="text" name="myPets" value={this.state.myPets} onChange={e => this.handleChange(e)}/>
           
-          <input type="submit" value="Submit" />
-
+          <input type="submit" value="Submit" className="button" />
+          </div>
         </form>
       </div>
     );

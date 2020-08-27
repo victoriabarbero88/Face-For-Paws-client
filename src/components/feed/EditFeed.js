@@ -76,22 +76,24 @@ class EditFeed extends Component {
 
   render() {
     return (
-      <div>
+      <div className="editComponent">
         <hr />
-        <h3>Edit form</h3>
+        <header className="UserHeader">
+          <h1>Edit form</h1>
+        </header>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
-          <label>Photo:</label>
+      <div className="Div">
           <img src={this.state.photo} alt="actual"/>
+         
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/> 
-          <label>File:</label>
+         
           <input type="text" name="title" value={this.state.title} onChange={e => this.handleChange(e)}/>
-          <label>Description:</label>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
           
-          <input type="submit" value="Submit" />
-
+          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)} className="Divtext"/>
+          
+          <input type="submit" value="Submit" className="button" />
+</div>
         </form>
       </div>
     );

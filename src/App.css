@@ -474,3 +474,16 @@ body {
   text-align: center;
   padding-top: 8%;
 }
+
+.Div {
+  display: flex;
+  flex-direction: column;
+  margin: 10% 10%;
+
+}
+.Divtext {
+  padding-bottom: 20%;
+}
+.editComponent {
+  padding-bottom: 20%;
+}

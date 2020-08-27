@@ -89,13 +89,18 @@ class EditPet extends Component {
   render() {
     console.log(this.state)
     return (
-      <div>
+      <div className="editComponent">
         <hr />
-        <h3>Edit form</h3>
+        <header className="UserHeader">
+          <h1>Edit form</h1>
+        </header>
         <form onSubmit={this.handleFormSubmit}>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
-          <img src={this.state.photo} alt="actual"/>
+          <div className="Div">
+          <img src={this.state.photo} alt="actual" style={{width:'100%'}}/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/>
+          
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
+          
           <select
             name="location"
             value={this.state.location}
@@ -131,7 +136,7 @@ class EditPet extends Component {
               <option value="Other">Other</option>
 
           </select>
-          <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="description" value={this.state.description}  className="Divtext" onChange={e => this.handleChange(e) }/>
           <select
             name="status"
             value={this.state.status}
@@ -141,8 +146,8 @@ class EditPet extends Component {
               <option value="Foster">Foster</option>
           </select>
           
-          <input type="submit" value="Submit" />
-
+          <input type="submit" value="Submit" className="button"/>
+          </div>
         </form>
       </div>
     );

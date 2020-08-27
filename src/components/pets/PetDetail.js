@@ -10,6 +10,7 @@ class PetDetail extends Component {
   }
 
   componentDidMount(){
+    window.scrollTo(0, 0);
     this.getSinglePet();
   }
 
@@ -41,28 +42,40 @@ class PetDetail extends Component {
 
 
       <div className="PetLGeneral">
-      <h1>{this.state.name}</h1>
+        <header className="petDHeader">
+          <h1>Hi! I'm {this.state.name}</h1>
+        </header>
         <div className="petContainer">
-          <div className="petLStyle">
-            <div className="petLDiv">
+          <div className="">
+            <div className="petDDiv">
             <h2>I'm {this.state.status}</h2>
-              {this.state.photo ? (
-                <img src={this.state.photo[0].medium} alt="pet" style={{width: '100%'}}/>
-                ) : null}
+            {this.state.photo ? 
+              (
+                this.state.photo[0].medium ? 
+                  (<img src={this.state.photo[0].medium} alt="pet" style={{width: '100%'}}/>)
+                  : 
+                  (<img src={this.state.photo[0]} alt="pet" style={{width: '100%'}}/>)
+                
+              )
+              : null
+                }
+
               <p>Hi, my name is {this.state.name} and I'm a {this.state.age} {this.state.gender} {this.state.species} I'm from {this.state.location}</p>
               <p>Let me explain you a little bit about me, {this.state.description}</p>
             </div>
-            <button className="button">
-              <Link to={`/shelter/${this.state.shelter}`} className="petLink">
-              I'm in this shelter
-              </Link>
-            </button>
-            <br/>
-            <button className="button">
-              <Link to={"/pet"} className="petLink">
-              Back to pets
-              </Link>
-            </button>
+              <div className="petDButtons">
+                <button className="button">
+                  <Link to={`/shelter/${this.state.shelter}`} className="petDLink">
+                  My Shelter
+                  </Link>
+                </button>
+                <br/>
+                <button className="button">
+                  <Link to={"/pet"} className="petDLink">
+                  Back to pets
+                  </Link>
+              </button>
+            </div>
           </div>
         </div>
       </div>

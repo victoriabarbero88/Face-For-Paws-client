@@ -11,6 +11,7 @@ class UserDetail extends Component {
   }
   
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getSingleUser();
   }
 
@@ -39,8 +40,10 @@ class UserDetail extends Component {
   //primero no llega nada, después llega objeto
     console.log(this.state)
     return (
-      <div className="userLGeneral">
-      <h1>{this.state.name}</h1>
+      <div className="petLGeneral">
+        <header className="UserHeader">
+          <h1>{this.state.name}</h1>
+        </header>
         <div className="userContainer">
           <div className="userStyle">
             <div className="userLDiv">
@@ -51,10 +54,14 @@ class UserDetail extends Component {
                 <p>Hi, I'm {this.state.name} and I'm from {this.state.location}.</p>
                 <p>I'm available for {this.state.status}</p>
                 <p>Something about me: {this.state.description}</p>
-                <Link to={"/add-message"}>Contact</Link>
+                <button className="button">
+                  <Link to={"/add-message"} className="feedDLink">Contact</Link>
+                </button>
               </div>
               <div className="userLinkContainer">
-                <Link to={"/user"} className="userLink" >Back to Users</Link>
+              <button className="button">
+                <Link to={"/user"} className="feedDLink" >Back to Users</Link>
+              </button>
               </div>
             </div>
           </div>

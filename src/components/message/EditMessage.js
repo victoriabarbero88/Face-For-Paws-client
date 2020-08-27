@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import service from '../api/service';
 
 class EditMessage extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class EditMessage extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const messageId = this.props.match.params.id;
     
     axios
@@ -53,6 +55,25 @@ class EditMessage extends Component {
     this.setState({[name]: value });
   };
 
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+  
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("photo", e.target.files[0]);
+    
+    service.handleUpload(uploadData)
+    .then(response => {
+        console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ photo: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  }  
+
   render() {
     return (
       <div>
@@ -63,7 +84,7 @@ class EditMessage extends Component {
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
           <label>Photo:</label>
           <img src={this.state.photo} alt="actual"/>
-          <input type="file" name="photo" onChange={e => this.handleChange(e)}/> 
+          <input type="file" onChange={e => this.handleFileUpload(e)}/> 
           <label>File:</label>
           <input type="text" name="title" value={this.state.title} onChange={e => this.handleChange(e)}/>
           <label>Description:</label>

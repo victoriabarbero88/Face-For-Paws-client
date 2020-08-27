@@ -18,13 +18,16 @@ class ListUsers extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getAllUsers();
   }
 
   render() {
     return (
       <div className="userLGeneral">
-        <h1>PawFriends <span role="img" aria-label="paws"> 🐾</span></h1>
+        <header className="PetHeader">
+          <h1>PawFriends <span role="img" aria-label="paws"> 🐾</span></h1>
+        </header>
         <div className="userContainer">
           <div className="userStyle">
             {this.state.listOfUsers.map(user=> {

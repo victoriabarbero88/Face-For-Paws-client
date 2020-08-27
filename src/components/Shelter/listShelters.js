@@ -18,21 +18,34 @@ class ListShelters extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getAllShelters();
   }
 
   render() {
     return (
-      <div className="shelterLGeneral">
-      <h1>Shelters</h1>
-        <div className="shelterLContainer">
-          <div className="shelterlStyle">
+      <div className="PetLGeneral">
+        <header className="PetHeader">
+          <h1>Shelters</h1>
+        </header>
+        <div className="petContainer">
+          <div className="petLlStyle">
             {this.state.listOfShelters.map(shelter=> {
               return (
                 <div key={shelter._id} className="shelterDiv" >
                   <Link to={`/shelter/${shelter._id}`} className="shelterLink">
                     <h3>{shelter.name}</h3>
-                    <img src={shelter.photo[0].medium} alt="shelter" style={{width: '100%', maxWidth: 150}}/>
+                    {shelter.photo ? 
+                    (
+                      shelter.photo[0].medium ? 
+                        (<img src={shelter.photo[0].medium} alt="pet" style={{width: '100%'}}/>)
+                        : 
+                        (<img src={shelter.photo[0]} alt="pet" style={{width: '100%'}}/>)
+                      
+                    )
+                    : null
+                      }
+
                   </Link>
                 </div>
               );

@@ -10,6 +10,7 @@ class SheleterDetail extends Component {
   }
   
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getSingleShelter();
   }
 
@@ -36,14 +37,23 @@ class SheleterDetail extends Component {
   render(){
     console.log(this.state.pets)
     return (
-      <div className="shelterGeneral">
-        <h1>{this.state.name}</h1>
-        <div className="shelterContainer">
+      <div className="PetDGeneral">
+        <header className="petDHeader">
+          <h1>{this.state.name}</h1>
+        </header>
+        <div className="petContainer">
           <div className="shelterStyle">
-            <div className="shelterDDiv">
-              {this.state.photo ? (
-              <img src={this.state.photo[0].medium} alt="shelter" style={{width: '150%', maxWidth: 200}}/>
-              ) : null}
+            <div className="petDDiv">
+            {this.state.photo ? 
+              (
+                this.state.photo[0].medium ? 
+                  (<img src={this.state.photo[0].medium} alt="pet" style={{width: '100%'}}/>)
+                  : 
+                  (<img src={this.state.photo[0]} alt="pet" style={{width: '100%'}}/>)
+                
+              )
+              : null
+               }
               <div className="shelterDText">
                 <p>Location: {this.state.location}</p>
                 <p>Phone number: {this.state.phone}</p>
@@ -56,22 +66,34 @@ class SheleterDetail extends Component {
                     <div key={pet._id} className="petLDiv" >
                       <Link to={`/pet/${pet._id}`} className="petLink">
                         <p>{pet.name}</p>
-                          {pet.photo[0] ? (
-                        <img src={pet.photo[0].full} alt="pet" style={{width: '100%', maxWidth: 200}}/>
-                            ) : null}
+                        {pet.photo ? 
+                        (
+                          pet.photo[0].medium ? 
+                            (<img src={pet.photo[0].medium} alt="pet" style={{width: '100%'}}/>)
+                            : 
+                            (<img src={pet.photo[0]} alt="pet" style={{width: '100%'}}/>)
+                        )
+                        : null
+                          }
                       </Link>
                     </div> 
                     )
                      }) : null} 
-                </div>  
-                <Link to={"/add-message"}>Contact</Link>
-              
-              <Link to={"/shelter"} className="shelterDLink">
-              Back to Shelters
-              </Link>
-            </div>
+                </div> 
+                <div className="petDButtons">
+                  <button className="button">
+                    <Link to={"/add-message"} className="petDLink">Contact</Link>
+                  </button>
+                  <br/>
+                  <button className="button">
+                    <Link to={"/shelter"} className="petDLink">
+                      Back to Shelters
+                    </Link>
+                  </button>
+                </div>
           </div>
         </div>
+      </div>
       </div>
       </div>
     )

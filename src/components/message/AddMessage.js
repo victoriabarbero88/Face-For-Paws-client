@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import service from '../api/service';
 
 class AddMessage extends Component {
   constructor(props) {
@@ -34,7 +35,24 @@ class AddMessage extends Component {
     const { name, value } = event.target;
     this.setState({[name]: value });
   };
-
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+  
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("photo", e.target.files[0]);
+    
+    service.handleUpload(uploadData)
+    .then(response => {
+        console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ photo: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  }  
   render() {
     return (
       <div className="addMessageGeneral">
@@ -62,9 +80,7 @@ class AddMessage extends Component {
            
             <input
               type="file"
-              name="photo"
-              value={this.state.photo}
-              onChange={e => this.handleChange(e)}
+              onChange={e => this.handleFileUpload (e)}
               placeholder="Photo"
             />  
             <textarea

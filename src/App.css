@@ -67,10 +67,19 @@ body {
 
 /*PROFILE CONTAINER*/
 
-.profileContainer {
-  padding: 4%;
-}
 
+.Pbutton {
+  padding: 1%;
+  border-color:rgba(163, 27, 27, 0.719);
+  background-color: rgba(214, 40, 40, 0.719);
+  color: white;
+  
+}
+#profh3 h3 {
+  display: flex;
+  text-align:center;
+  justify-content: center;
+}
 /*USER*/
 
 .userStyle p {
@@ -164,6 +173,44 @@ body {
   height: 100px;
   width: 100%;
   color: white;
+}
+
+
+/*PET DETAIL*/
+
+.petDButtons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  
+}
+.petContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5% 0;
+  margin-left: 2%;
+}
+.petContainer h2 {
+  margin-bottom: 10px;
+}
+.petDDiv {
+  margin:  5%;
+  border-radius: 10%;
+  background-color: white;
+  padding: 10%;
+}
+
+.petDLink {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.petDHeader {
+  background-image: url(https://i.pinimg.com/564x/8f/18/72/8f18726aabdf7f76e22c9a3b4f32abf6.jpg);
+  height: 100px;
+  width: 100%;
+  color: white;
   
   
 }
@@ -198,10 +245,12 @@ body {
 }
 
 /*SHELTER*/
-.shelterGeneral h1 {
-  padding-top: 5%;
+.PetDGeneral h1{
   padding-left: 4%;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 10px;
+  
 }
 .shelterStyle{
   display: flex;
@@ -390,4 +439,38 @@ body {
 }
 .addMessageDiv textarea {
   margin: 5px;
+}
+
+/*LOGIN*/
+
+.loginHeader {
+  background-image: url(https://i.pinimg.com/564x/8f/18/72/8f18726aabdf7f76e22c9a3b4f32abf6.jpg);
+  width: 100%;
+  color: white;
+  padding-bottom: 20%;
+  text-align: center;
+}
+
+.logDiv{
+  display: flex;
+  flex-direction: column;
+  margin: 0 20%;
+  
+}
+
+#loginButton {
+  display: flex;
+  justify-content: center;
+}
+
+/*USER DETAIL*/
+.UserHeader {
+  background-image: url(https://i.pinimg.com/564x/8f/18/72/8f18726aabdf7f76e22c9a3b4f32abf6.jpg);
+  height: 100px;
+  width: 100%;
+  color: white;
+}
+.UserHeader h1 {
+  text-align: center;
+  padding-top: 8%;
 }

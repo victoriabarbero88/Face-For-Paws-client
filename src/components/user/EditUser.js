@@ -9,6 +9,7 @@ class EditUser extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const userId = this.props.match.params.id;
     
     axios
@@ -53,9 +54,13 @@ class EditUser extends Component {
   };
   
   handleChange = event => {
-    const { name, value } = event.target;
+    let { name, value, type } = event.target;
+    if (type ==="checkbox") {
+      value = value.checked
+    }
     this.setState({[name]: value });
   };
+  
   handleFileUpload = e => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
   
@@ -87,10 +92,28 @@ class EditUser extends Component {
           <img src={this.state.photo} alt="actual"/>
           <input type="file" onChange={e => this.handleFileUpload(e)}/> 
           <label>Location:</label>
-          <input type="text" name="location" value={this.state.location} onChange={e => this.handleChange(e)}/>
+          <select
+            name="location"
+            value={this.state.location}
+            onChange={e => this.handleChange(e)}>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Girona">Girona</option>
+              <option value="Tarragona">Tarragona</option>
+              <option value="Lleida">Barcelona</option>
+          </select> 
           <label>Description:</label>
           <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)}/>
           <label>Status:</label>
+          <select
+            name="status"
+            value={this.state.status}
+            onChange={e => this.handleChange(e)} >
+              <option value="Foster Home">Foster Home</option>
+              <option value="Sponsor">Sponsor</option>
+              <option value="Dog Walker">Dog Walker</option>
+              <option value="Animal Watcher">Animal Watcher</option>
+          </select> 
+          
           <input type="text" name="status" value={this.state.status} onChange={e => this.handleChange(e)}/>
           <label>My Pets:</label>
           <input type="text" name="myPets" value={this.state.myPets} onChange={e => this.handleChange(e)}/>
@@ -104,3 +127,29 @@ class EditUser extends Component {
 }
 
 export default EditUser;
+
+{/* <label>Status:</label>
+          <label>Sponsor</label>
+          <input
+            type="checkbox"
+            name="status"
+            value={this.state.status}
+            onChange={e => this.handleChange(e)}/ >
+            <label>Foster Home</label>
+            <input
+            type="checkbox"
+            name="status"
+            value={this.state.status}
+            onChange={e => this.handleChange(e)}/ >
+            <label>Dog Walker</label>
+            <input
+            type="checkbox"
+            name="status"
+            value={this.state.status}
+            onChange={e => this.handleChange(e)}/ >
+            <label>Animal Watcher</label>
+            <input
+            type="checkbox"
+            name="status"
+            value={this.state.status}
+            onChange={e => this.handleChange(e)}/ > */}

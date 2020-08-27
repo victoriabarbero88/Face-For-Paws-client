@@ -56,20 +56,7 @@ handleFileUpload = e => {
     .catch(err => {
       console.log("Error while uploading the file: ", err);
     });
-}
-  // this method submits the form
-  // handleSubmit = e => {
-  //   e.preventDefault();
-    
-  //   service.saveNewThing(this.state)
-  //   .then(res => {
-  //       console.log('added: ', res);
-  //       // here you would redirect to some other page 
-  //   })
-  //   .catch(err => {
-  //       console.log("Error while adding the thing: ", err);
-  //   });
-  // }  
+  }
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({[name]: value });
@@ -138,7 +125,7 @@ handleFileUpload = e => {
               <option value="Cat">Cat</option>
               <option value="Bird">Bird</option>
               <option value="Hamster">Hamster</option>
-              <option value="Rabit">Rabit</option>
+              <option value="Rabit">Rabbit</option>
               <option value="Ferret">Ferret</option>
               <option value="Other">Other</option>
 

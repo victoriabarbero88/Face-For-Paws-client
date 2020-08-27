@@ -28,29 +28,32 @@ class Signup extends Component {
     //recogemos en las variables los estado actuales del state
     const { name, email, password, isShelter } = this.state;
     return (
-      <div>
+      <div className="loginHeader">
         <h1>Sign Up</h1>
         <form onSubmit={this.handleFormSubmit}>
-
+        <div className="logDiv">
           <label>Are you a Shelter?</label>
           <input type="checkbox" name="isShelter" value={isShelter} onChange={this.handleChange}/>
-
-          <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={this.handleChange} />
-
-          <label>Email:</label>
-          <input type="text" name="email" value={email} onChange={this.handleChange} />
-
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-
+          <br/>
+       
+          <input type="text" name="name" value={name} onChange={this.handleChange} placeholder="Name" />
+          <br/>
+   
+          <input type="text" name="email" value={email} onChange={this.handleChange} placeholder="Email" />
+          <br/>
+          
+          <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
+          <br/>
           <input type="submit" value="Signup" />
+          </div>
         </form>
-        
-        <Link to={"/login"}>Already have account? Login</Link>
+        <br/>
+        <Link to={"/login"}>Already have account? Please, Login</Link>
       </div>
     );
   }
 }
 
 export default withAuth(Signup);
+
+

@@ -139,12 +139,13 @@ body {
   background-color: white;
   padding: 8%;
 }
-.petLDiv img {
-  margin: 20px;
+.PetLGeneral img {
   border-radius: 5%;
 }
 .petLDiv h3 {
   margin-top: 5px;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 .petLink {
   text-decoration: none;
@@ -153,8 +154,18 @@ body {
   padding-bottom: 20px;
 }
 .PetLGeneral h1{
-  padding-top: 5%;
   padding-left: 4%;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 20px;
+}
+.PetHeader {
+  background-image: url(https://i.pinimg.com/564x/8f/18/72/8f18726aabdf7f76e22c9a3b4f32abf6.jpg);
+  height: 100px;
+  width: 100%;
+  color: white;
+  
+  
 }
 /*SHLETER LIST*/
 
@@ -279,7 +290,9 @@ body {
 .addFeedDiv input, label {
   margin: 5px;
 }
-
+.addFeedDiv textarea {
+  margin: 5px;
+}
 
 .addPetGeneral h1 {
   padding-top: 5%;
@@ -364,4 +377,17 @@ body {
   font-size: 2rem;
   text-align: center;
   padding-top: 20px;
+}
+.addMessageDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 10% 8%;
+  padding-bottom: 20%;
+}
+
+.addMessageDiv input, label {
+  margin: 5px;
+}
+.addMessageDiv textarea {
+  margin: 5px;
 }

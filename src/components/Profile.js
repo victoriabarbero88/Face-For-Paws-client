@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom';
 import axios from "axios";
 import { withAuth } from "../lib/AuthProvider";
+import service from './api/service';
+
 
 
 //import User from "./components/user/User";
@@ -42,7 +44,24 @@ class Profile extends Component {
         console.log(err);
     });
   }
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
   
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("photo", e.target.files[0]);
+    
+    service.handleUpload(uploadData)
+    .then(response => {
+        console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ photo: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  }
   render() {
     const { logout } = this.props;
     return (
@@ -72,7 +91,7 @@ class Profile extends Component {
                     <section className="petList">
                         <h3>Pet list</h3>
                         <div className="petShelter">
-                          {this.state.pets.map(pet => {
+                          {this.state.pets ? this.state.pets.map(pet => {
                             return (
                               <div key={pet._id} className="petLDiv" >
                                 <Link to={`/edit-pet/${pet._id}`} className="petLink">
@@ -84,13 +103,13 @@ class Profile extends Component {
                                 <button onClick={() => this.deletePet(pet._id)} >Delete</button>
                               </div>
                             )
-                          })}
+                          }) : null }
                         </div>
                     </section>
                     <section className="FeedList">
                         <h3>Feed list</h3>
                         <div className="feedShelter">
-                          {this.state.feed.map(feed => {
+                          {this.state.feed ? this.state.feed.map(feed => {
                             return (
                               <div key={feed._id} className="petLDiv" >
                                 <Link to={`/edit-feed/${feed._id}`} className="feedLink">
@@ -102,7 +121,7 @@ class Profile extends Component {
                                 <button onClick={() => this.deleteFeed(feed._id)} >Delete</button>
                               </div>
                             )
-                          })}
+                          }) : null }
                         </div>
                     </section>
                   </div>
@@ -132,6 +151,24 @@ class Profile extends Component {
                     <Link to={"/user"} className="userLink" >Back to Users</Link>
                   </div>
                 </div>
+                <section className="FeedList">
+                        <h3>Feed list</h3>
+                        <div className="feedShelter">
+                          {this.state.feed ? this.state.feed.map(feed => {
+                            return (
+                              <div key={feed._id} className="petLDiv" >
+                                <Link to={`/edit-feed/${feed._id}`} className="feedLink">
+                                  <p>{feed.name}</p>
+                                  {feed.photo ? (
+                                    <img src={feed.photo} alt="feed" style={{width: '100%', maxWidth: 200}}/>
+                                  ) : null}
+                                </Link>
+                                <button onClick={() => this.deleteFeed(feed._id)} >Delete</button>
+                              </div>
+                            )
+                          }) : null }
+                        </div>
+                    </section>
               </div>
             </div>
           </div>

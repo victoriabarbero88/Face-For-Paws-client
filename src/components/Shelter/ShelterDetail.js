@@ -34,6 +34,7 @@ class SheleterDetail extends Component {
   };
 
   render(){
+    console.log(this.state.pets)
     return (
       <div className="shelterGeneral">
         <h1>{this.state.name}</h1>
@@ -48,9 +49,9 @@ class SheleterDetail extends Component {
                 <p>Phone number: {this.state.phone}</p>
                 <p>Website: <Link src={this.state.website}>{this.state.website}</Link></p>
                 <p>{this.state.description}</p>
-                <p>{this.state.pets}</p>
+                
                 <div className="petShelter">
-                  {/* {this.state.pets.map(pet => {
+                   {this.state.pets ? this.state.pets.map(pet => {
                     return (
                     <div key={pet._id} className="petLDiv" >
                       <Link to={`/pet/${pet._id}`} className="petLink">
@@ -61,7 +62,7 @@ class SheleterDetail extends Component {
                       </Link>
                     </div> 
                     )
-                     })} */}
+                     }) : null} 
                 </div>  
                 <Link to={"/add-message"}>Contact</Link>
               

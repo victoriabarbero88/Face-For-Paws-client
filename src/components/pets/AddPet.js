@@ -19,6 +19,7 @@ class AddPet extends Component {
   }
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state)
     const name = this.state.name;
     const photo = this.state.photo;
     const location = this.state.location;
@@ -57,18 +58,18 @@ handleFileUpload = e => {
     });
 }
   // this method submits the form
-  handleSubmit = e => {
-    e.preventDefault();
+  // handleSubmit = e => {
+  //   e.preventDefault();
     
-    service.saveNewThing(this.state)
-    .then(res => {
-        console.log('added: ', res);
-        // here you would redirect to some other page 
-    })
-    .catch(err => {
-        console.log("Error while adding the thing: ", err);
-    });
-  }  
+  //   service.saveNewThing(this.state)
+  //   .then(res => {
+  //       console.log('added: ', res);
+  //       // here you would redirect to some other page 
+  //   })
+  //   .catch(err => {
+  //       console.log("Error while adding the thing: ", err);
+  //   });
+  // }  
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({[name]: value });

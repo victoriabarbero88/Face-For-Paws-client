@@ -45,7 +45,7 @@ class FeedDetail extends Component {
           <div className="feedDDiv">
             <div className="feedArticle">
               <h3>{this.state.title}</h3>
-              <img src={this.state.photo} alt="feed" style={{width: '100%', maxWidth: 300}} />
+              <img src={this.state.photo} alt="feed" style={{width: '100%'}} />
               <div className="feedText" >
                 <p>{this.state.description}</p>
                 <p className="feedName">{this.state.name}</p>
@@ -55,8 +55,8 @@ class FeedDetail extends Component {
               <div >
                 <button className="button"><Link to={"/add-message"} className="feedDLink">Contact {this.state.name}</Link></button>
                 <br/>
-                <button className="button"><Link to={`/shelter/${this.state.shelter}`} className="feedDLink">See {this.state.name}'s profile</Link></button>
-                <br/>
+                {/* <button className="button"><Link to={`/shelter/${this.state.shelter}`} className="feedDLink">See {this.state.name}'s profile</Link></button>
+                <br/> */}
                 <button className="button"><Link to={"/feed"} className="feedDLink">Back to Feeds</Link></button>
               </div>
             </div>

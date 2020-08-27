@@ -40,7 +40,7 @@ class ListFeed extends Component {
                   <Link to={`/feed/${feed._id}`} className="feedLink">
                     <h3>{feed.title}</h3>
                     <div className="feedListImage">
-                      <img src={feed.photo} alt="feed" style={{width: '100%', maxWidth: 300}}/>
+                      <img src={feed.photo} alt="feed" style={{width: '100%'}}/>
                     </div>
                   </Link>
                 </div>

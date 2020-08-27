@@ -25,7 +25,9 @@ class ListsPets extends Component {
   render() {
     return (
       <div className="PetLGeneral">
-      <h1>PawFamily</h1>
+        <header className="PetHeader">
+          <h1>PawFamily</h1>
+        </header>
         <div className="petContainer">
           <div className="petLStyle">
             {this.state.listOfPets.map(pet => {
@@ -33,9 +35,11 @@ class ListsPets extends Component {
                 <div key={pet._id} className="petLDiv" >
                   <Link to={`/pet/${pet._id}`} className="petLink">
                     <h3>Hi! I'm {pet.name}</h3>
-                    {pet.photo[0] ? (
-                      <img src={pet.photo[0].medium} alt="pet" style={{width: '100%', maxWidth: 200}}/>
-                    ) : null}
+                    {pet.photo[0].medium ? (
+                      <img src={pet.photo[0].medium} alt="pet" style={{width: '100%'}}/>
+                    ) : 
+                      <img src={pet.photo} alt="pet" style={{width: '100%'}}/>
+                      }
                   </Link>
                 </div>
               );

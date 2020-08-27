@@ -57,7 +57,7 @@ class AddMessage extends Component {
               name="name"
               value={this.state.name}
               onChange={e => this.handleChange(e)}
-              placeholder="name"
+              placeholder="From"
             />
            
             <input
@@ -73,7 +73,7 @@ class AddMessage extends Component {
               onChange={e => this.handleChange(e)}
               placeholder="Message"
             />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" className="button" />
             <img src="" alt=""/>
           </div>
           </form>
